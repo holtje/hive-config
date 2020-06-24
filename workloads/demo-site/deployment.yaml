@@ -20,12 +20,12 @@ spec:
         app: demo-site
     spec:
       containers:
-        - name: site
-          image: stefanprodan/podinfo:3.3.1
-          imagePullPolicy: Always
-          resources:
-            limits:
-              cpu: "250m"
-              memory: "32Mi"
-          ports:
-            - containerPort: 9898
+      - name: site
+        image: stefanprodan/podinfo:4.0.5
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "250m"
+            memory: "32Mi"
+        ports:
+        - containerPort: 9898
