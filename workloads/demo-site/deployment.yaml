@@ -2,13 +2,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-site-deployment
+  name: site-deployment
   namespace: demo
   labels:
     app: demo-site
   annotations:
     fluxcd.io/tag.demo-site: semver:~3
-    fluxcd.io/automated: 'true'
+    fluxcd.io/automated: "true"
 spec:
   replicas: 3
   selector:
@@ -20,12 +20,12 @@ spec:
         app: demo-site
     spec:
       containers:
-      - name: demo-site
-        image: stefanprodan/podinfo:3.3.1
-        imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: "250m"
-            memory: "32Mi"
-        ports:
-        - containerPort: 9898
+        - name: site
+          image: stefanprodan/podinfo:3.3.1
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "32Mi"
+          ports:
+            - containerPort: 9898
