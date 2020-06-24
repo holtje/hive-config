@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-site-deployment
+  namespace: demo
+  labels:
+    app: demo-site
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-site
+  template:
+    metadata:
+      labels:
+        app: demo-site
+    spec:
+      containers:
+        - name: demo-site
+          image: docwhat/docwhat:master
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "32Mi"
+          ports:
+            - containerPort: 80
