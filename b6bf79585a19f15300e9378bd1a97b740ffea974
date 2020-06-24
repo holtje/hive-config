@@ -1,0 +1,1 @@
+{"jobID":"176b0348-0aca-da9e-834a-aac1a08cadc6","spec":{"type":"policy","cause":{"Message":"","User":""},"spec":{"demo:deployment/demo-site-deployment":{"add":{"automated":"true"},"remove":{}}}},"result":null}
