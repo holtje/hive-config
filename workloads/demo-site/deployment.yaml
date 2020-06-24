@@ -5,6 +5,8 @@ metadata:
   namespace: demo
   labels:
     app: demo-site
+  annotations:
+    fluxcd.io/tag.demo-site: semver:~3
 spec:
   replicas: 3
   selector:
@@ -17,11 +19,11 @@ spec:
     spec:
       containers:
         - name: demo-site
-          image: docwhat/docwhat:master
+          image: stefanprodan/podinfo:3.0.2
           imagePullPolicy: Always
           resources:
             limits:
               cpu: "250m"
               memory: "32Mi"
           ports:
-            - containerPort: 80
+            - containerPort: 9898
