@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: hello-two
   namespace: demo
+  labels:
+    app: hello-two
 spec:
   type: ClusterIP
   ports:
@@ -16,6 +18,8 @@ kind: Deployment
 metadata:
   name: hello-two
   namespace: demo
+  labels:
+    app: hello-two
 spec:
   replicas: 3
   selector:

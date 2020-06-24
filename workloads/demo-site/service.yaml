@@ -3,22 +3,12 @@ kind: Service
 metadata:
   name: demo-site-service
   namespace: demo
-  # https://www.linode.com/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/#annotations
-  annotations:
-    service.beta.kubernetes.io/linode-loadbalancer-protocol: "tcp"
   labels:
     app: demo-site
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-    - name: http
-      port: 80
-      protocol: TCP
+    - port: 80
       targetPort: 9898
-    # - name: https
-    #   port: 443
-    #   protocol: TCP
-    #   targetPort: 443
   selector:
     app: demo-site
-  sessionAffinity: None
