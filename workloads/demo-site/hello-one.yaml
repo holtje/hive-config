@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-one
+  namespace: demo
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: hello-one
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-one
+  namespace: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-one
+  template:
+    metadata:
+      labels:
+        app: hello-one
+    spec:
+      containers:
+        - name: hello-ingress
+          image: nginxdemos/hello
+          ports:
+            - containerPort: 80
