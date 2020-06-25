@@ -18,4 +18,4 @@ spec:
   values:
     rbac.enabled: false
     # https://www.linode.com/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/#annotations
-    service.annotations.service.beta.kubernetes.io/linode-loadbalancer-protocol: "tcp"
+    "service.annotations.service\\.beta\\.kubernetes\\.io/linode-loadbalancer-protocol": "tcp"
