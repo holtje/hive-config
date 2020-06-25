@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -8,8 +9,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 80
   selector:
     app: hello-one
 ---
@@ -31,7 +32,7 @@ spec:
         app: hello-one
     spec:
       containers:
-        - name: hello-ingress
-          image: nginxdemos/hello
-          ports:
-            - containerPort: 80
+      - name: hello-ingress
+        image: nginxdemos/hello:0.2
+        ports:
+        - containerPort: 80
