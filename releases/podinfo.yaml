@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: podinfo
-  namespace: system
+  namespace: flux
 spec:
   chart:
     repository: "https://stefanprodan.github.io/podinfo"
