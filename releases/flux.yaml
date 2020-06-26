@@ -1,0 +1,16 @@
+---
+apiVersion: "helm.fluxcd.io/v1"
+kind: "HelmRelease"
+metadata:
+  name: "flux"
+  namespace: "flux"
+spec:
+  helmVersion: "v3"
+  releaseName: "flux"
+  chart:
+    repository: "https://charts.fluxcd.io"
+    name: "flux"
+    version: "1.3.0"
+  values:
+    syncGarbageCollection.enabled: true
+    git.url: "git@github.com:holtje/hive-config"
