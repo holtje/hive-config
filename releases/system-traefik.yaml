@@ -12,9 +12,9 @@ spec:
   targetNamespace: system
   releaseName: traefik
   chart:
-    name: "traefik"
-    repository: "https://containous.github.io/traefik-helm-chart"
-    version: "2.2.1"
+    name: traefik
+    repository: https://containous.github.io/traefik-helm-chart
+    version: 2.2.1
   values:
     rbac.enabled: false
     # https://www.linode.com/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/#annotations
