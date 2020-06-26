@@ -14,7 +14,3 @@ jobs:
           helmVersion: v3
           helmRelease: releases/
           kubernetesVersion: 1.17.0
-      - name: Validate K8S Yaml
-        uses: makocchi-git/actions-k8s-manifests-validate-kubeval@1.0.0
-        with:
-          files: namespaces,workloads
