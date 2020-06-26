@@ -11,7 +11,18 @@ spec:
     - traefik
   routes:
     - kind: Rule
-      match: Host(`traefik.localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      match: Host(`traefik.localhost`)
       services:
         - kind: TraefikService
           name: api@internal
+      middlewares:
+        - name: auth
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: auth
+  namespace: system
+spec:
+  basicAuth:
+    secret: authusers # The name of a kubernetes generic secret.
