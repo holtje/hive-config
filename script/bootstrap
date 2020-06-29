@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -euo pipefail
+
+typeset -ra programs=(
+  kubectl
+  kubeseal
+  fluxctl
+)
+
+function has() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+typeset -a missing=()
+for program in "${programs[@]}"; do
+  if ! has "$program"; then
+    missing=("${missing[@]}" "$program")
+  fi
+done
+
+if (("${#missing[@]}")); then
+  if [[ $OSTYPE == darwin* ]] && has brew; then
+    brew install "${missing[@]}"
+  else
+    echo "Please install the following programs:"
+    for program in "${programs[@]}"; do
+      echo " - ${program}"
+    done
+  fi
+else
+  echo "You are bootstrapped and ready to go! "
+fi
+
+# EOF
