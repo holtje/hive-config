@@ -6,6 +6,7 @@ typeset -ra programs=(
   kubectl
   kubeseal
   fluxctl
+  helm
 )
 
 function has() {
