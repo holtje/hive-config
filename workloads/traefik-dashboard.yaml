@@ -12,7 +12,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Host(`traefik.docwhat.dev`)
+      match: Host(`traefik.docwhat.net`)
       services:
         - kind: TraefikService
           name: api@internal

@@ -59,7 +59,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Host(`site.docwhat.dev`)
+      match: Host(`site.docwhat.net`)
       services:
         - name: site-service
           port: 80
