@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: traefik
     app.kubernetes.io/name: traefik
   name: traefik-dashboard
-  namespace: system
+  namespace: kube-system
 spec:
   entryPoints:
     - web
@@ -23,7 +23,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: auth
-  namespace: system
+  namespace: kube-system
 spec:
   basicAuth:
     secret: authusers # The name of a kubernetes generic secret.

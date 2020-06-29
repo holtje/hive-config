@@ -4,12 +4,12 @@ kind: HelmRelease
 # https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/release-configuration/
 metadata:
   name: traefik
-  namespace: system
+  namespace: kube-system
   labels:
     app.kubernetes.io/name: traefik
 spec:
   helmVersion: v3
-  targetNamespace: system
+  targetNamespace: kube-system
   releaseName: traefik
   chart:
     name: traefik
