@@ -16,5 +16,7 @@ spec:
       interval: "5m"
     git:
       url: "git@github.com:holtje/hive-config"
+      user: "Hive Queen"
+      email: "docwhat@users.noreply.github.com"
     syncGarbageCollection:
       enabled: true
