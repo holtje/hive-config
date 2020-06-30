@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: podinfo
   namespace: flux
+  annotations:
+    fluxcd.io/automated: 'true'
 spec:
   chart:
     repository: "https://stefanprodan.github.io/podinfo"
