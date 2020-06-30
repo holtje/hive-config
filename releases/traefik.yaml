@@ -17,7 +17,7 @@ spec:
   releaseName: traefik
   chart:
     name: traefik
-    version: 8.7.0
+    version: 8.7.1
     repository: https://containous.github.io/traefik-helm-chart/
   values:
     service:
