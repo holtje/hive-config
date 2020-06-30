@@ -22,7 +22,7 @@ spec:
       middlewares:
         - name: auth
       tls:
-        certresolver: myresolver
+        certresolver: le
 
 ###############################################
 # BasicAuth Middleware
