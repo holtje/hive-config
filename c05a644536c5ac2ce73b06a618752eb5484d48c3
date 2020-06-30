@@ -1,0 +1,1 @@
+{"jobID":"cb44d62d-bb3e-4c24-0a12-be5936eddae8","spec":{"type":"policy","cause":{"Message":"","User":""},"spec":{"flux:helmrelease/podinfo":{"add":{"automated":"true"},"remove":{}}}},"result":null}
