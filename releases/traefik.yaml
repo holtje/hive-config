@@ -7,6 +7,10 @@ metadata:
   namespace: kube-system
   labels:
     app.kubernetes.io/name: traefik
+  annotations:
+    fluxcd.io/tag.demo-site: semver:~8.7
+    fluxcd.io/automated: "true"
+
 spec:
   helmVersion: v3
   targetNamespace: kube-system
