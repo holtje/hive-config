@@ -1,3 +1,6 @@
+###############################################
+# Traefik dashboard
+###############################################
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -9,7 +12,7 @@ metadata:
   namespace: kube-system
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: Host(`traefik.docwhat.net`)
@@ -18,7 +21,12 @@ spec:
           name: api@internal
       middlewares:
         - name: auth
+      tls:
+        certresolver: myresolver
 
+###############################################
+# BasicAuth Middleware
+###############################################
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -32,6 +40,9 @@ spec:
   basicAuth:
     secret: authusers # The name of a kubernetes generic secret.
 
+###############################################
+# User/Password for http auth
+###############################################
 ---
 kind: SealedSecret
 apiVersion: bitnami.com/v1alpha1
@@ -50,3 +61,22 @@ spec:
         app.kubernetes.io/name: traefik
   encryptedData:
     users: AgBrK8o6m/iCZfQAkp+E7D87dR50gX9PbaCuO2VVfpbNaS/OEtxjL1EvpD7kr9NF96+W0Ep6SPAibE7aTPhRA5M4cgwhq+PAlk5h6HtkhlFtMfDI72vTzX9d35+W5FsIqBnlEskzjLYDgu/0LZBSHwvl/BA6oTjVhiwelvbblvuF3bNoj0KHNlampcPsX+Zp5kbGigWHjML1RM6GwsxT2CR866OzrKjROaR+oUsvm8aUZTaVjTcAgmvY+wVeCS/MaQCY1H/2EKx3/CczVCsqgEvLNjXHqb/7sDaLbUyh8dTdLwX8hfvx0tk/xX/cCqzDtwKSGLv3fjIVM0Wz8K2E5mAhdPqp0q7ey8BMcbWWcTz2AnMoytutJDGmQJCOHzBomNc4vf4LOq0v00h3rO1w+2cWG2Ldq8fbWnhlgYfBT4CTDJ10afQ+5zdNTvMvuCRuU5iNWQLK603xrM+Gg4XZ+E8XYnbu2HU8AaTCq/ShLvLmbajvd4/YzTUINHF+xPqkcjiiuWiphB18MuYiH3Z/RioNKR8StmdGGwYD2AQ1kcKRpIVtuRLWVjkQQqmjLluD9JL+6pu5eEw4ypUoEuR43wnmveqYRCHuhfPny6Zu6/99Fbp0qbM5sRFEnWZsrqxk+o6eSHnDFKU7tfj/tBhh3zsCyO/xh8r/K0B4i8gxX5eP75gc1srzulbkajfAXFQA1sxgjk4CmCDID+wZf+XajC9CPAopm0P0La76kjjrhEpRbp7xYwFg7NVnbA77Jng3UA==
+
+###############################################
+# Linode
+###############################################
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+  name: linode
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      name: linode
+      namespace: kube-system
+  encryptedData:
+    api-token: AgCdxkXnbmQ00+Wmd1hp9t+iX6iMSqXSFi3s//44JEIEgjDzZuA5THVNSFaWFrhrDcp/H5y+5+5AL14Hu7vtgThF7ymi0A8UF9wrfUk1D1M4uOh476fYpKVydvUb44OBe0JnQ6rAPe8Onh4C5oyCy4Fcy/9IWssH3r7THQWNfCPn3xZa5xfgwEYMYcBlxYiAVBRWn4saTx/F/a/9kXgekENUPO/pQ6IAz4ycWzll8hmtXqtLiVcVt3vSC7hGCdTGzFneN16hC0hl6QfxV2wQZRPjkIoDCq0PYQtgUKV66o1DGWITOzLoqb+dziGKS7Y+364rvB0lLiUX1KcQ40DE3EVM8GJGATePCdu/8AO3NTE6p/pwrZe4HH7L4+MPKi+zeAbupR8YzuahIuOpATPCKt5gn+Vumyc0h/tgAj911sRFPck+1liKjwQsJGLycAOa2y31bG+ZdKQi4uJCr6m0VtlZgyFh5MmfRSiix/xGL7S9vidTHYPvzOyt0ozvAx+djAsmU3WhKnWmpXkfhTJ2nXOxJ6ibPYve6GmaWICwFVafgPLr/4cIHOA9BJWz8uTDR6mFXFK+YVR4NhM1Eqg0UzWk7+EvQWHtC6tE1FM1iaWuKbqcOo1BVnS1j0c6x5Jq3af1mHIX8g3lDpMWhAZwytV4qQryhDwuamlvUKLT6LsubgO91IpchyXmoq+YAtWWxRTap5hZi+mzX7bBnVdaUCJB02MihSL6k7xC2bumLB1gjnDfNhpm5pBocjZjKLQ8YUZgH/9RmKltYggI1sdw6VV/

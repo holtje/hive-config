@@ -24,3 +24,18 @@ spec:
       dashboard:
         labels:
           "app.kubernetes.io/name": "traefik"
+    env:
+      - name: "LINODE_TOKEN"
+        valueFrom:
+          secretKeyRef:
+            name: linode
+            key: api-token
+
+    additionalArguments:
+      - "--certificatesresolvers.myresolver.acme.email=docwhat@gmail.com"
+      - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=linodev4"
+      # - "--certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+    persistence:
+      enabled: true
