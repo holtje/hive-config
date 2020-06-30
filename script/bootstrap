@@ -3,10 +3,11 @@
 set -euo pipefail
 
 typeset -ra programs=(
-  kubectl
-  kubeseal
   fluxctl
   helm
+  kubectl
+  kubeseal
+  octant
 )
 
 function has() {
