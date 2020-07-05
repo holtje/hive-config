@@ -1,0 +1,1 @@
+{"jobID":"f1ac4a56-8529-7ad2-54db-2fe28a19d962","spec":{"type":"policy","cause":{"Message":"","User":""},"spec":{"kube-system:helmrelease/traefik":{"add":{},"remove":{"locked":"true","locked_msg":"true","locked_user":"true"}}}},"result":null}
