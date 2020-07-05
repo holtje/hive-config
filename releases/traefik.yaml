@@ -47,6 +47,7 @@ spec:
       enabled: true
       annotations:
         "pv.beta.kubernetes.io/gid": "65532"
+      size: 1Gi
     securityContext:
       readOnlyRootFilesystem: false
     podSecurityContext:
