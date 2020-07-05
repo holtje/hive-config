@@ -29,19 +29,20 @@ spec:
         labels:
           "app.kubernetes.io/name": "traefik"
     env:
-    - name: "LINODE_TOKEN"
-      valueFrom:
-        secretKeyRef:
-          name: traefik-linode-dns
-          key: token
+      - name: "LINODE_TOKEN"
+        valueFrom:
+          secretKeyRef:
+            name: traefik-linode-dns
+            key: token
 
     additionalArguments:
-    - "--log.level=DEBUG"
-    - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
-    - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-    - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
+      - "--log.level=DEBUG"
+      - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
+      - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
+      - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       # - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-    - "--certificatesresolvers.le.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.le.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
     persistence:
       enabled: true
       size: 1Gi
