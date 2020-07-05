@@ -43,3 +43,8 @@ spec:
       - "--certificatesresolvers.le.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
     persistence:
       enabled: true
+      size: 1Gi
+      annotations:
+        "pv.beta.kubernetes.io/gid": "65532"
+      podSecurityContext:
+        fsGroup: 65532
