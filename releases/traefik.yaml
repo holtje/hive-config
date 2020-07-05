@@ -47,5 +47,8 @@ spec:
       enabled: true
       annotations:
         "pv.beta.kubernetes.io/gid": "65532"
-      podSecurityContext:
-        fsGroup: 65532
+    securityContext:
+      readOnlyRootFilesystem: false
+    podSecurityContext:
+      fsGroup: 65532
+    # https://github.com/containous/traefik-helm-chart/pull/212
