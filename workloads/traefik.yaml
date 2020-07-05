@@ -25,7 +25,8 @@ spec:
     certResolver: le
     domains:
       - main: "docwhat.net"
-        sans: "*.docwhat.net"
+        sans:
+          - "*.docwhat.net"
 
 ###############################################
 # BasicAuth Middleware
