@@ -36,7 +36,7 @@ spec:
             key: token
 
     additionalArguments:
-      - "--log.level=DEBUG"
+      - "--log.level=INFO"
       - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
       - "--certificatesresolvers.le.acme.storage=/data/acme.json"
       - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
