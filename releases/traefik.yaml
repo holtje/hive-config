@@ -32,7 +32,7 @@ spec:
       - name: "LINODE_TOKEN"
         valueFrom:
           secretKeyRef:
-            name: traefik-linode
+            name: traefik-linode-dns
             key: token
 
     additionalArguments:
