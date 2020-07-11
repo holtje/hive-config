@@ -45,6 +45,8 @@ spec:
     additionalArguments:
       - "--log.level=INFO"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entryPoint.permanent=false"
       - "--entrypoints.websecure.http.tls.certResolver=le"
       - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.net"
       - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.net"
