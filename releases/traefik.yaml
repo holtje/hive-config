@@ -48,8 +48,7 @@ spec:
       - "--certificatesresolvers.le.acme.storage=/data/acme.json"
       - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
-      # - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.le.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
     persistence:
       enabled: true
       annotations:
