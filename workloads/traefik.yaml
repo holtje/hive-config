@@ -20,6 +20,7 @@ spec:
         - kind: TraefikService
           name: api@internal
       middlewares:
+        - name: redirect
         - name: auth
   tls:
     certResolver: le
@@ -43,6 +44,23 @@ metadata:
 spec:
   basicAuth:
     secret: authusers # The name of a kubernetes generic secret.
+
+###############################################
+# Redirect from HTTP to HTTPS Middleware
+###############################################
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: false
 
 ###############################################
 # User/Password for http auth
