@@ -7,9 +7,6 @@ metadata:
   namespace: kube-system
   labels:
     app.kubernetes.io/name: traefik
-  annotations:
-    fluxcd.io/tag.demo-site: semver:~8.7
-    fluxcd.io/automated: "true"
 
 spec:
   helmVersion: v3
@@ -17,11 +14,9 @@ spec:
   releaseName: traefik
   chart:
     name: traefik
-    version: 8.7.1
+    version: 8.9.0
     repository: https://containous.github.io/traefik-helm-chart/
   values:
-    image:
-      tag: 2.2.4
     service:
       annotations:
         # https://www.linode.com/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/#annotations
