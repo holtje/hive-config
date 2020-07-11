@@ -1,6 +1,6 @@
-name: validation
+name: "Validate Helm Releases"
 
-on:
+"on":
   pull_request:
     paths:
       - "releases/**.yaml"

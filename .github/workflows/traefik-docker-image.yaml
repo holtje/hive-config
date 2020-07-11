@@ -1,6 +1,6 @@
 name: "Traefik docker image"
 
-on:
+"on":
   push:
     branches:
       - main
