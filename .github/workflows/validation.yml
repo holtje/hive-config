@@ -1,16 +1,22 @@
 name: validation
 
-on: [pull_request]
+on:
+  pull_request:
+    paths:
+      - "releases/**.yaml"
+  push:
+    paths:
+      - "releases/**.yaml"
+    tags-ignore:
+      - "flux-sync"
 
 jobs:
   hrval:
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
     steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: Validate Helm Releases
-        uses: stefanprodan/hrval-action@master
+      - uses: "actions/checkout@v1"
+      - uses: "stefanprodan/hrval-action@master"
         with:
-          helmVersion: v3
-          helmRelease: releases/
-          kubernetesVersion: 1.17.0
+          helmVersion: "v3"
+          helmRelease: "releases/"
+          kubernetesVersion: "1.17.0"
