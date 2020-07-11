@@ -3,7 +3,7 @@ name: "Traefik docker image"
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "containers/traefik/**"
       - ".github/workflows/traefik-docker-image.yaml"
