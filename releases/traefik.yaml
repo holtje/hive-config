@@ -20,6 +20,8 @@ spec:
     version: 8.7.1
     repository: https://containous.github.io/traefik-helm-chart/
   values:
+    image:
+      tag: 2.2.4
     service:
       annotations:
         # https://www.linode.com/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/#annotations
