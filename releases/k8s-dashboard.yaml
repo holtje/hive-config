@@ -9,6 +9,7 @@ spec:
     name: "kubernetes-dashboard"
     version: "2.2.0"
   values:
+    protocolHttp: true
     ingress:
       enabled: true
       annotations:
