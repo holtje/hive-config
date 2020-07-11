@@ -26,3 +26,4 @@ jobs:
           build_args: TRAEFIK_VERSION=2.2.4
           repository: docwhat/traefik
           tags: latest
+          add_git_labels: true
