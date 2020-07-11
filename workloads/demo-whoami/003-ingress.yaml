@@ -1,0 +1,17 @@
+# IngresRoute http
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: whoami
+  namespace: demo
+
+spec:
+  rules:
+    - host: whoami.docwhat.net
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: whoami
+              servicePort: 80

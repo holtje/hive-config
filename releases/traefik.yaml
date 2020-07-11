@@ -44,6 +44,10 @@ spec:
               mountPath: /data
     additionalArguments:
       - "--log.level=INFO"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.websecure.http.tls.certResolver=le"
+      - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.net"
+      - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.net"
       - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
       - "--certificatesresolvers.le.acme.storage=/data/acme.json"
       - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"

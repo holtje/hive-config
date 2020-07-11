@@ -1,24 +1,3 @@
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  labels:
-    app.kubernetes.io/instance: traefik
-    app.kubernetes.io/name: traefik
-  name: traefik-https-redirector
-  namespace: kube-system
-spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: Host(`*.docwhat.net`) || Host(`docwhat.net`)
-      services:
-        - kind: TraefikService
-          name: noop@internal
-      middlewares:
-        - name: https-redirect
-
 ###############################################
 # Traefik dashboard
 ###############################################
