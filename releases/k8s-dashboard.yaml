@@ -1,0 +1,17 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: k8s-dashboard
+spec:
+  chart:
+    repository: "https://kubernetes.github.io/dashboard/"
+    name: "kubernetes-dashboard"
+    version: "2.2.0"
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        "traefik.ingress.kubernetes.io/router.middlewares": "traefik-https-redirect@kubernetescrd"
+      hosts:
+        - "k8s.docwhat.net"
