@@ -46,19 +46,19 @@ spec:
     app: blog-stg
 
 ---
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
 metadata:
   name: blog-stg
   namespace: blog-stg
-  labels:
-    app: blog-stg
+  annotations:
+    "traefik.ingress.kubernetes.io/router.middlewares": "traefik-https-redirect@kubernetescrd"
 spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: Host(`next.docwhat.net`)
-      services:
-        - name: blog-stg
-          port: 80
+  rules:
+    - host: "next.docwhat.net"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: blog-stg
+              servicePort: 80
