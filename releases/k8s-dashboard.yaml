@@ -3,6 +3,8 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: k8s-dashboard
+  annotations:
+    fluxcd.io/automated: "true"
 spec:
   chart:
     repository: "https://kubernetes.github.io/dashboard/"
@@ -16,3 +18,8 @@ spec:
         "traefik.ingress.kubernetes.io/router.middlewares": "traefik-https-redirect@kubernetescrd"
       hosts:
         - "k8s.docwhat.net"
+    metricsScraper:
+      enabled: true
+      image:
+        repository: kubernetesui/metrics-scraper
+        tag: v1.0.4
