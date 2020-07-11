@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog
+  namespace: next
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog
+      environment: next
+  template:
+    metadata:
+      labels:
+        environment: next
+        app: blog
+    spec:
+      containers:
+        - name: blog
+          image: docwhat/docwhat:master
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "32Mi"
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/cache/nginx
+              name: cache-volume
+            - mountPath: /run
+              name: run-volume
+          securityContext:
+            readOnlyRootFilesystem: true
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
