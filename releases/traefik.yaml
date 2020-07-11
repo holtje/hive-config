@@ -44,11 +44,6 @@ spec:
               mountPath: /data
     additionalArguments:
       - "--log.level=INFO"
-      - "--entryPoints.web.address=:80"
-      - "--entryPoints.websecure.address=:443"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-      - "--entrypoints.web.http.redirections.entryPoint.permanent=false"
       - "--entrypoints.websecure.http.tls.certResolver=le"
       - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.net"
       - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.net"
@@ -57,17 +52,6 @@ spec:
       - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-    ports:
-      web:
-        expose: true
-        exposedPort: 80
-        port: 80
-        protocol: TCP
-      websecure:
-        expose: true
-        exposedPort: 443
-        port: 443
-        protocol: TCP
     persistence:
       enabled: true
       annotations:

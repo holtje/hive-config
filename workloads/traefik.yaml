@@ -21,12 +21,7 @@ spec:
           name: api@internal
       middlewares:
         - name: auth
-  tls:
-    certResolver: le
-    domains:
-      - main: "docwhat.net"
-        sans:
-          - "*.docwhat.net"
+  tls: {}
 
 ###############################################
 # BasicAuth Middleware
