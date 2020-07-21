@@ -1,0 +1,20 @@
+---
+apiVersion: "helm.fluxcd.io/v1"
+kind: "HelmRelease"
+metadata:
+  name: "helm-operator"
+  namespace: "flux"
+spec:
+  chart:
+    repository: "https://charts.fluxcd.io"
+    name: "helm-operator"
+    version: "1.1.0"
+  releaseName: "helm-operator"
+  helmVersion: "v3"
+  values:
+    namespace: "flux"
+    helm:
+      versions: "v3"
+    git:
+      ssh:
+        secretName: "flux-git-deploy"
