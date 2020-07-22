@@ -17,7 +17,7 @@ spec:
     git:
       url: "git@github.com:holtje/hive-config"
       branch: "main"
-      path: "namespaces,releases,workloads,kubernetes"
+      path: "kubernetes"
       user: "Hive Queen"
       email: "docwhat@users.noreply.github.com"
     syncGarbageCollection:
