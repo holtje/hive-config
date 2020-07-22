@@ -7,6 +7,9 @@ kind: Middleware
 metadata:
   name: https-redirect
   namespace: traefik
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
 spec:
   redirectScheme:
     scheme: https

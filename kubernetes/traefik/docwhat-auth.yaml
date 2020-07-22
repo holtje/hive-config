@@ -25,6 +25,9 @@ metadata:
   namespace: traefik
   annotations:
     sealedsecrets.bitnami.com/cluster-wide: "true"
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
 spec:
   template:
     metadata:

@@ -60,10 +60,16 @@ metadata:
     sealedsecrets.bitnami.com/cluster-wide: "true"
   name: traefik-linode-dns
   namespace: traefik
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
 spec:
   template:
     metadata:
       name: traefik-linode-dns
       namespace: traefik
+      labels:
+        app.kubernetes.io/instance: traefik
+        app.kubernetes.io/name: traefik
   encryptedData:
     token: AgCdxkXnbmQ00+Wmd1hp9t+iX6iMSqXSFi3s//44JEIEgjDzZuA5THVNSFaWFrhrDcp/H5y+5+5AL14Hu7vtgThF7ymi0A8UF9wrfUk1D1M4uOh476fYpKVydvUb44OBe0JnQ6rAPe8Onh4C5oyCy4Fcy/9IWssH3r7THQWNfCPn3xZa5xfgwEYMYcBlxYiAVBRWn4saTx/F/a/9kXgekENUPO/pQ6IAz4ycWzll8hmtXqtLiVcVt3vSC7hGCdTGzFneN16hC0hl6QfxV2wQZRPjkIoDCq0PYQtgUKV66o1DGWITOzLoqb+dziGKS7Y+364rvB0lLiUX1KcQ40DE3EVM8GJGATePCdu/8AO3NTE6p/pwrZe4HH7L4+MPKi+zeAbupR8YzuahIuOpATPCKt5gn+Vumyc0h/tgAj911sRFPck+1liKjwQsJGLycAOa2y31bG+ZdKQi4uJCr6m0VtlZgyFh5MmfRSiix/xGL7S9vidTHYPvzOyt0ozvAx+djAsmU3WhKnWmpXkfhTJ2nXOxJ6ibPYve6GmaWICwFVafgPLr/4cIHOA9BJWz8uTDR6mFXFK+YVR4NhM1Eqg0UzWk7+EvQWHtC6tE1FM1iaWuKbqcOo1BVnS1j0c6x5Jq3af1mHIX8g3lDpMWhAZwytV4qQryhDwuamlvUKLT6LsubgO91IpchyXmoq+YAtWWxRTap5hZi+mzX7bBnVdaUCJB02MihSL6k7xC2bumLB1gjnDfNhpm5pBocjZjKLQ8YUZgH/9RmKltYggI1sdw6VV/
