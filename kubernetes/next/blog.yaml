@@ -61,17 +61,17 @@ metadata:
   name: blog
   namespace: next
 
-  spec:
-    entryPoints:
-      - web
-      - websecure
+spec:
+  entryPoints:
+    - web
+    - websecure
 
-    routes:
-      - match: "Host('next.docwhat.net')"
-        kind: Rule
-        services:
-          - name: bog
-            port: 80
-        middlewares:
-          - name: https-redirect
-            namespace: traefik
+  routes:
+    - match: "Host('next.docwhat.net')"
+      kind: Rule
+      services:
+        - name: bog
+          port: 80
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
