@@ -67,7 +67,7 @@ spec:
     - websecure
 
   routes:
-    - match: "Host('next.docwhat.net')"
+    - match: "Host(`next.docwhat.net`)"
       kind: Rule
       services:
         - name: bog

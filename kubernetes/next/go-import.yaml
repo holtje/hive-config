@@ -62,7 +62,7 @@ spec:
     - websecure
 
   routes:
-    - match: "Host('next.docwhat.net') && Method('GET', 'HEAD') && Query('go-get=1')"
+    - match: "Host(`next.docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
       kind: Rule
       services:
         - name: go-import
