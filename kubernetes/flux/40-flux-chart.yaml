@@ -22,3 +22,5 @@ spec:
       email: "docwhat@users.noreply.github.com"
     syncGarbageCollection:
       enabled: true
+    registry:
+      disableScanning: true
