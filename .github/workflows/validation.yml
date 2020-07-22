@@ -3,10 +3,10 @@ name: "Validate Helm Releases"
 "on":
   pull_request:
     paths:
-      - "releases/**.yaml"
+      - "kubernetes/**.yaml"
   push:
     paths:
-      - "releases/**.yaml"
+      - "kubernetes/**.yaml"
     tags-ignore:
       - "flux-sync"
 
@@ -18,5 +18,5 @@ jobs:
       - uses: "stefanprodan/hrval-action@master"
         with:
           helmVersion: "v3"
-          helmRelease: "releases/"
-          kubernetesVersion: "1.17.0"
+          helmRelease: "kubernetes/"
+          kubernetesVersion: "1.17.9"
