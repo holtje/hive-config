@@ -40,3 +40,38 @@ spec:
           emptyDir: {}
         - name: run-volume
           emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  namespace: next
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: blog
+    environment: next
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: blog
+  namespace: traefik
+
+  spec:
+    entryPoints:
+      - web
+      - websecure
+
+    routes:
+      - match: "Host('next.docwhat.net')
+        kind: Rule
+        services:
+          - name: bog
+            port: 80
+        middlewares:
+          - name: https-redirect
+            namespace: traefik

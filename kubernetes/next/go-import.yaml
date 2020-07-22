@@ -1,0 +1,72 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-import
+  namespace: next
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: go-import
+      environment: next
+  template:
+    metadata:
+      labels:
+        environment: next
+        app: go-import
+    spec:
+      containers:
+        - name: go-import
+          image: docker.io/docwhat/go-importd:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "8Mi"
+          env:
+            - name: "GO_IMPORTD_GITHUB_USER_URL"
+              value: "https://github.com/docwhat"
+            - name: "GO_IMPORTD_IMPORT_DOMAIN"
+              value: "docwhat.org"
+          ports:
+            - containerPort: 80
+          securityContext:
+            readOnlyRootFilesystem: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-import
+  namespace: next
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: go-import
+    environment: next
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: go-import
+  namespace: next
+
+  spec:
+    entryPoints:
+      - web
+      - websecure
+
+    routes:
+      - match: "Host('next.docwhat.net') && Method('GET', 'HEAD') && Query('go-get=1')"
+        kind: Rule
+        services:
+          - name: go-import
+            port: 80
+        middlewares:
+          - name: https-redirect
+            namespace: traefik

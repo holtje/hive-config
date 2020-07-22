@@ -1,0 +1,13 @@
+---
+###############################################
+# Redirect from HTTP to HTTPS Middleware
+###############################################
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: https-redirect
+  namespace: traefik
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: false
