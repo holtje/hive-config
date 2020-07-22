@@ -15,11 +15,12 @@ spec:
     sync:
       interval: "5m"
     git:
-      url: "git@github.com:holtje/hive-config"
+      url: "git@github.com:holtje/hive-config.git"
       branch: "main"
       path: "kubernetes"
       user: "Hive Queen"
       email: "docwhat@users.noreply.github.com"
+      secretName: "flux-git-deploy"
     syncGarbageCollection:
       enabled: true
     registry:
