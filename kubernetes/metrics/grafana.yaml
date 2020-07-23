@@ -1,0 +1,16 @@
+---
+apiVersion: "helm.fluxcd.io/v1"
+kind: "HelmRelease"
+# https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/release-configuration/
+metadata:
+  name: "grafana"
+  namespace: "metrics"
+spec:
+  helmVersion: "v3"
+  releaseName: "grafana"
+  targetNamespace: "metrics"
+  chart:
+    name: "grafana"
+    version: "5.5.0"
+    repository: "https://kubernetes-charts.storage.googleapis.com/"
+  values: {}
