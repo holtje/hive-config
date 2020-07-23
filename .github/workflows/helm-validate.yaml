@@ -1,0 +1,22 @@
+name: 'Validate Helm Releases'
+
+'on':
+  pull_request:
+    paths:
+      - 'kubernetes/**-chart.yaml'
+  push:
+    paths:
+      - 'kubernetes/**-chart.yaml'
+    tags-ignore:
+      - 'flux-sync'
+
+jobs:
+  hrval:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: 'actions/checkout@v1'
+      - uses: 'stefanprodan/hrval-action@master'
+        with:
+          helmVersion: 'v3'
+          helmRelease: 'kubernetes/'
+          kubernetesVersion: '1.17.9'
