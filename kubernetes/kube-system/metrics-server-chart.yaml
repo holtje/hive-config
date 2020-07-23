@@ -10,7 +10,9 @@ spec:
   targetNamespace: kube-system
   releaseName: metrics-server
   chart:
-    name: metric-server
+    name: metrics-server
     version: "4.2.1"
     repository: "https://charts.bitnami.com/bitnami"
-  values: {}
+  values:
+    apiService:
+      create: true
