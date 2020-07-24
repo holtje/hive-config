@@ -1,29 +1,4 @@
 ###############################################
-# Traefik HTTPS Redirect
-###############################################
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  labels:
-    app.kubernetes.io/instance: traefik
-    app.kubernetes.io/name: traefik
-  name: traefik-dashboard-redirect
-  namespace: traefik
-spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: Host(`traefik.docwhat.net`)
-      services:
-        - name: noop@internal
-          kind: TraefikService
-      middlewares:
-        - name: https-redirect
-          namespace: traefik
-
-###############################################
 # Traefik dashboard
 ###############################################
 ---
@@ -37,6 +12,7 @@ metadata:
   namespace: traefik
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
     - kind: Rule
@@ -45,6 +21,8 @@ spec:
         - name: api@internal
           kind: TraefikService
       middlewares:
+        - name: https-redirect
+          namespace: traefik
         - name: docwhat-auth
           namespace: traefik
   tls: {}
