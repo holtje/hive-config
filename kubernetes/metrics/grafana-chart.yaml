@@ -13,4 +13,10 @@ spec:
     name: "grafana"
     version: "5.5.0"
     repository: "https://kubernetes-charts.storage.googleapis.com/"
-  values: {}
+  values:
+    env:
+      GF_SERVER_ROOT_URL: "https://grafana.docwhat.net"
+      GF_AUTH_ANONYMOUS_ENABLED: false
+      GF_AUTH_GITHUB_ENABLED: true
+      GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: holtje
+    envFromSecret: "grafana-ini-secrets"

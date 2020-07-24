@@ -19,5 +19,3 @@ spec:
       middlewares:
         - name: https-redirect
           namespace: traefik
-        - name: docwhat-auth
-          namespace: traefik
