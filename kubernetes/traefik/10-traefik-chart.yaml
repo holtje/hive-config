@@ -12,7 +12,6 @@ spec:
   helmVersion: v3
   targetNamespace: traefik
   releaseName: traefik
-  forceUpgrade: true
   chart:
     repository: https://containous.github.io/traefik-helm-chart/
     name: traefik
