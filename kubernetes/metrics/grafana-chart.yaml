@@ -18,7 +18,6 @@ spec:
       GF_SERVER_ROOT_URL: "https://grafana.docwhat.net"
       GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: true
       GF_AUTH_DISABLE_LOGIN_FORM: true
-      GF_AUTH_OAUTH_AUTO_LOGIN: true
       GF_AUTH_ANONYMOUS_ENABLED: false
       GF_AUTH_BASIC_ENABLED: false
       GF_AUTH_GITHUB_ENABLED: true
