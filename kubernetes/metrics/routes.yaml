@@ -1,0 +1,21 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  namespace: metrics
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+    - match: "Host(`grafana.docwhat.net`)"
+      kind: Rule
+      services:
+        - name: prometheus-operator-grafana
+          port: 80
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
