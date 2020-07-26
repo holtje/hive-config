@@ -24,6 +24,5 @@ spec:
         GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: holtje
         GF_AUTH_GITHUB_ENABLED: true
         # GF_AUTH_OAUTH_AUTO_LOGIN: true
-        # GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: true
-        GF_SERVER_ROOT_URL: "https://grafana.docwhat.net"
+        GF_SERVER_ROOT_URL: "https://grafana.docwhat.net/"
       envFromSecret: "grafana-env-secrets"
