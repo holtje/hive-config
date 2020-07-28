@@ -44,6 +44,7 @@ spec:
       - "--metrics.prometheus"
       - "--metrics.prometheus.buckets=0.1,0.3,1.2,5.0"
       - "--metrics.prometheus.entrypoint=metrics"
+      - "--entrypoints.metrics.address=:8082"
     persistence:
       enabled: false
     podSecurityContext:
