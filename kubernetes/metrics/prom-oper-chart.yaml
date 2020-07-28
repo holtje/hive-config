@@ -17,6 +17,9 @@ spec:
     kubeEtcd:
       enabled: false
     grafana:
+      persistence:
+        enabled: true
+        existingClaim: grafana-claim
       admin:
         existingSecret: "grafana-env-secrets"
         userKey: "GF_SECURITY_ADMIN_USER"
