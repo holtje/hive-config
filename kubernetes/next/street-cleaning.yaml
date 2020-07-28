@@ -79,7 +79,7 @@ spec:
     - match: "Host(`next.docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)"
       kind: Rule
       services:
-        - name: blog
+        - name: street-cleaning
           port: 80
       middlewares:
         - name: https-redirect
