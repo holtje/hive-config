@@ -46,7 +46,9 @@ spec:
       - "--metrics.prometheus.entrypoint=metrics"
       - "--entrypoints.metrics.address=:8082"
     persistence:
-      enabled: false
+      enabled: true
+      existingClaim: traefik-claim
+
     podSecurityContext:
       fsGroup: 65532
     # https://github.com/containous/traefik-helm-chart/pull/212
