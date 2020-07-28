@@ -31,17 +31,6 @@ spec:
           secretKeyRef:
             name: traefik-linode-dns
             key: token
-    deployment:
-      initContainers:
-        # The "volume-permissions" init container is required if you run into
-        # permission issues. Related issue:
-        # https://github.com/containous/traefik/issues/6972
-        - name: volume-permissions
-          image: busybox:1.32.0
-          command: ["/bin/sh", "-c", "/bin/chmod -Rv 0600 /data/*"]
-          volumeMounts:
-            - name: data
-              mountPath: /data
     additionalArguments:
       - "--log.level=INFO"
       - "--entrypoints.websecure.http.tls.certResolver=le"
@@ -53,12 +42,7 @@ spec:
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
     persistence:
-      enabled: true
-      annotations:
-        "pv.beta.kubernetes.io/gid": "65532"
-      size: 1Gi
-    securityContext:
-      readOnlyRootFilesystem: false
+      enabled: false
     podSecurityContext:
       fsGroup: 65532
     # https://github.com/containous/traefik-helm-chart/pull/212
