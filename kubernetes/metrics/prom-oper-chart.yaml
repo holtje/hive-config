@@ -14,13 +14,13 @@ spec:
     version: "9.2.1"
     repository: "https://kubernetes-charts.storage.googleapis.com/"
   values:
-    admin:
-      existingSecret: "grafana-env-secrets"
-      userKey: "GF_SECURITY_ADMIN_USER"
-      passwordKey: "GF_SECURITY_ADMIN_PASSWORD"
     kubeEtcd:
       enabled: false
     grafana:
+      admin:
+        existingSecret: "grafana-env-secrets"
+        userKey: "GF_SECURITY_ADMIN_USER"
+        passwordKey: "GF_SECURITY_ADMIN_PASSWORD"
       env:
         GF_AUTH_ANONYMOUS_ENABLED: false
         # GF_AUTH_BASIC_ENABLED: false
