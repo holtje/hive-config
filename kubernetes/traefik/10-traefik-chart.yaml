@@ -41,6 +41,7 @@ spec:
       - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--metrics.prometheus"
       - "--metrics.prometheus.buckets=0.1,0.3,1.2,5.0"
       - "--metrics.prometheus.entrypoint=metrics"
     persistence:
