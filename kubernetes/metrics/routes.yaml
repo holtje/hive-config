@@ -29,3 +29,13 @@ spec:
           namespace: traefik
         - name: docwhat-auth
           namespace: traefik
+    - match: "Host(`alertmanager.docwhat.net`)"
+      kind: Rule
+      services:
+        - name: prometheus-operator-alertmanager
+          port: 9093
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+        - name: docwhat-auth
+          namespace: traefik
