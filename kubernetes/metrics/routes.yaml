@@ -19,3 +19,13 @@ spec:
       middlewares:
         - name: https-redirect
           namespace: traefik
+    - match: "Host(`prometheus.docwhat.net`)"
+      kind: Rule
+      services:
+        - name: prometheus-operator-prometheus
+          port: 9090
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+        - name: docwhat-auth
+          namespace: traefik
