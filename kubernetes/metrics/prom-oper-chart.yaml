@@ -34,6 +34,8 @@ spec:
         existingSecret: "grafana-env-secrets"
         userKey: "GF_SECURITY_ADMIN_USER"
         passwordKey: "GF_SECURITY_ADMIN_PASSWORD"
+      plugins:
+        - grafana-piechart-panel
       env:
         GF_AUTH_ANONYMOUS_ENABLED: false
         GF_AUTH_BASIC_ENABLED: false
