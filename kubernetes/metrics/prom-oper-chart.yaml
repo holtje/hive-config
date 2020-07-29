@@ -18,8 +18,14 @@ spec:
       rules:
         general: false
 
+    # Can't monitor linode control plane.
+    kubeControllerManager:
+      enabled: false
+    kubeScheduler:
+      enabled: false
     kubeEtcd:
       enabled: false
+
     grafana:
       persistence:
         enabled: true
@@ -36,14 +42,25 @@ spec:
         GF_AUTH_GITHUB_ENABLED: true
         GF_AUTH_OAUTH_AUTO_LOGIN: true
         GF_SERVER_ROOT_URL: "https://grafana.docwhat.net/"
+        GF_SERVER_ENABLE_GZIP: true
       envFromSecret: "grafana-env-secrets"
-    prometheusSpec:
-      storageSpec:
-        volumeClaimTemplate:
-          spec:
-            accessModes:
-              - "ReadWriteOnce"
-            resources:
-              requests:
-                storage: 20Gi
-            storageClassName: linode-block-storage
+    prometheus:
+      prometheusSpec:
+        externalUrl: "https://prometheus.docwhat.net/"
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: linode-block-storage
+              resources:
+                requests:
+                  storage: 10Gi
+    alertmanager:
+      alertmanagerSpec:
+        externalUrl: https://alertmanager.docwhat.net/
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: linode-block-storage
+              resources:
+                requests:
+                  storage: 10Gi
