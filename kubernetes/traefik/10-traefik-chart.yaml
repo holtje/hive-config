@@ -45,9 +45,21 @@ spec:
       - "--metrics.prometheus.buckets=0.1,0.3,1.2,5.0"
       - "--metrics.prometheus.entrypoint=metrics"
       - "--entrypoints.metrics.address=:8082"
+
     persistence:
       enabled: true
       existingClaim: traefik-claim
+    deployment:
+      initContainers:
+        # The "volume-permissions" init container is required if you run into
+        # permission issues. Related issue:
+        # https://github.com/containous/traefik/issues/6972
+        - name: volume-permissions
+          image: busybox:1.32.0
+          command: ["/bin/sh", "-c", "/bin/chmod -Rv 0600 /data/*"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
 
     podSecurityContext:
       fsGroup: 65532
