@@ -1,0 +1,69 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vacation-calendar
+  namespace: next
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vacation-calendar
+      environment: next
+  template:
+    metadata:
+      labels:
+        environment: next
+        app: vacation-calendar
+    spec:
+      containers:
+        - name: vacation-calendar
+          image: docker.io/docwhat/work-calendar:latest
+          imagePullPolicy: Always
+          imagePullSecrets:
+            - name: dockerio-secret
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "16Mi"
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/cache/nginx
+              name: cache-volume
+            - mountPath: /run
+              name: run-volume
+          securityContext:
+            readOnlyRootFilesystem: true
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vacation-calendar
+  namespace: next
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: vacation-calendar
+    environment: next
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: vacation-calendar-path
+  namespace: next
+spec:
+  replacePath:
+    path: "/"
+# The route is manually created because it has a secret URL.
+# See https://github.com/containous/traefik/issues/7127
