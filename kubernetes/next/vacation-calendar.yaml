@@ -22,8 +22,6 @@ spec:
         - name: vacation-calendar
           image: docker.io/docwhat/work-calendar:latest
           imagePullPolicy: Always
-          imagePullSecrets:
-            - name: dockerio-secret
           resources:
             limits:
               cpu: "20m"
@@ -37,6 +35,8 @@ spec:
               name: run-volume
           securityContext:
             readOnlyRootFilesystem: true
+      imagePullSecrets:
+        - name: dockerio-secret
       volumes:
         - name: cache-volume
           emptyDir: {}
