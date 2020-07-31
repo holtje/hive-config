@@ -24,4 +24,4 @@ spec:
     syncGarbageCollection:
       enabled: true
     registry:
-      disableScanning: true
+      disableScanning: false
