@@ -12,29 +12,4 @@ metadata:
     app.kubernetes.io/name: traefik
 spec:
   basicAuth:
-    secret: authusers # The name of a kubernetes generic secret.
-
-###############################################
-# User/Password for http auth
-###############################################
----
-kind: SealedSecret
-apiVersion: bitnami.com/v1alpha1
-metadata:
-  name: authusers
-  namespace: traefik
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  labels:
-    app.kubernetes.io/instance: traefik
-    app.kubernetes.io/name: traefik
-spec:
-  template:
-    metadata:
-      name: authusers
-      namespace: traefik
-      labels:
-        app.kubernetes.io/instance: traefik
-        app.kubernetes.io/name: traefik
-  encryptedData:
-    users: AgBrK8o6m/iCZfQAkp+E7D87dR50gX9PbaCuO2VVfpbNaS/OEtxjL1EvpD7kr9NF96+W0Ep6SPAibE7aTPhRA5M4cgwhq+PAlk5h6HtkhlFtMfDI72vTzX9d35+W5FsIqBnlEskzjLYDgu/0LZBSHwvl/BA6oTjVhiwelvbblvuF3bNoj0KHNlampcPsX+Zp5kbGigWHjML1RM6GwsxT2CR866OzrKjROaR+oUsvm8aUZTaVjTcAgmvY+wVeCS/MaQCY1H/2EKx3/CczVCsqgEvLNjXHqb/7sDaLbUyh8dTdLwX8hfvx0tk/xX/cCqzDtwKSGLv3fjIVM0Wz8K2E5mAhdPqp0q7ey8BMcbWWcTz2AnMoytutJDGmQJCOHzBomNc4vf4LOq0v00h3rO1w+2cWG2Ldq8fbWnhlgYfBT4CTDJ10afQ+5zdNTvMvuCRuU5iNWQLK603xrM+Gg4XZ+E8XYnbu2HU8AaTCq/ShLvLmbajvd4/YzTUINHF+xPqkcjiiuWiphB18MuYiH3Z/RioNKR8StmdGGwYD2AQ1kcKRpIVtuRLWVjkQQqmjLluD9JL+6pu5eEw4ypUoEuR43wnmveqYRCHuhfPny6Zu6/99Fbp0qbM5sRFEnWZsrqxk+o6eSHnDFKU7tfj/tBhh3zsCyO/xh8r/K0B4i8gxX5eP75gc1srzulbkajfAXFQA1sxgjk4CmCDID+wZf+XajC9CPAopm0P0La76kjjrhEpRbp7xYwFg7NVnbA77Jng3UA==
+    secret: holtje-auth
