@@ -11,11 +11,11 @@ spec:
   selector:
     matchLabels:
       app: blog
-      environment: next
+      environment: staging
   template:
     metadata:
       labels:
-        environment: next
+        environment: staging
         app: blog
     spec:
       containers:
@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: blog
+  name: blog-staging
   namespace: next
 spec:
   type: ClusterIP
@@ -53,4 +53,4 @@ spec:
       targetPort: 80
   selector:
     app: blog
-    environment: next
+    environment: staging

@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app: street-cleaning
-      environment: next
+      environment: production
   template:
     metadata:
       labels:
-        environment: next
         app: street-cleaning
+        environment: production
     spec:
       containers:
         - name: street-cleaning
@@ -53,4 +53,4 @@ spec:
       targetPort: 80
   selector:
     app: street-cleaning
-    environment: next
+    environment: production

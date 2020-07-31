@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app: go-import
-      environment: next
+      environment: production
   template:
     metadata:
       labels:
-        environment: next
         app: go-import
+        environment: production
     spec:
       containers:
         - name: go-import
@@ -48,4 +48,4 @@ spec:
       targetPort: 80
   selector:
     app: go-import
-    environment: next
+    environment: production

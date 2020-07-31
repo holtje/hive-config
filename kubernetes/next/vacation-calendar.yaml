@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app: vacation-calendar
-      environment: next
+      environment: production
   template:
     metadata:
       labels:
-        environment: next
         app: vacation-calendar
+        environment: production
     spec:
       containers:
         - name: vacation-calendar
@@ -55,4 +55,4 @@ spec:
       targetPort: 80
   selector:
     app: vacation-calendar
-    environment: next
+    environment: production

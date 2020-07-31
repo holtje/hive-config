@@ -26,7 +26,7 @@ spec:
     - match: "Host(`next.docwhat.net`)"
       kind: Rule
       services:
-        - name: blog
+        - name: blog-staging
           port: 80
       middlewares:
         - name: https-redirect
@@ -45,6 +45,9 @@ spec:
 
     - kind: Rule
       match: Host(`next.docwhat.net`) && Path(`/christian-vacation{?:.ics|}`)
+      services:
+        - name: vacation-calendar
+          port: 80
       middlewares:
         - name: https-redirect
           namespace: traefik
@@ -52,6 +55,3 @@ spec:
           namespace: traefik
         - name: docwhat-auth
           namespace: traefik
-      services:
-        - name: vacation-calendar
-          port: 80
