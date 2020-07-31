@@ -14,19 +14,19 @@ spec:
     - websecure
 
   routes:
-    - match: "Host(`next.docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
+    - match: "Host(`next.docwhat.net`)"
       kind: Rule
       services:
-        - name: go-import
+        - name: blog-staging
           port: 80
       middlewares:
         - name: https-redirect
           namespace: traefik
 
-    - match: "Host(`next.docwhat.net`)"
+    - match: "Host(`next.docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
       kind: Rule
       services:
-        - name: blog-staging
+        - name: go-import
           port: 80
       middlewares:
         - name: https-redirect
