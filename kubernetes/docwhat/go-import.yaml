@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: go-import
-          image: docker.io/docwhat/go-importd:v1
+          image: docker.io/docwhat/go-importd:1.0.0
           imagePullPolicy: Always
           resources:
             limits:
