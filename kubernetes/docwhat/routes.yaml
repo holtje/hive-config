@@ -5,8 +5,8 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: next-router
-  namespace: next
+  name: staging-router
+  namespace: docwhat
 
 spec:
   entryPoints:
