@@ -1,0 +1,57 @@
+# The route is manually created because it has a secret URL.
+# See https://github.com/containous/traefik/issues/7127
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: next-router
+  namespace: next
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+    - match: "Host(`next.docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
+      kind: Rule
+      services:
+        - name: go-import
+          port: 80
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+
+    - match: "Host(`next.docwhat.net`)"
+      kind: Rule
+      services:
+        - name: blog
+          port: 80
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+
+    - match: "Host(`next.docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)"
+      kind: Rule
+      services:
+        - name: street-cleaning
+          port: 80
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+        - name: replace-path-with-root
+          namespace: traefik
+
+    - kind: Rule
+      match: Host(`next.docwhat.net`) && Path(`/christian-vacation{?:.ics|}`)
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+        - name: replace-path-with-root
+          namespace: traefik
+        - name: docwhat-auth
+          namespace: traefik
+      services:
+        - name: vacation-calendar
+          port: 80

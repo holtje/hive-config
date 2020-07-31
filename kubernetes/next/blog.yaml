@@ -54,24 +54,3 @@ spec:
   selector:
     app: blog
     environment: next
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: blog
-  namespace: next
-
-spec:
-  entryPoints:
-    - web
-    - websecure
-
-  routes:
-    - match: "Host(`next.docwhat.net`)"
-      kind: Rule
-      services:
-        - name: blog
-          port: 80
-      middlewares:
-        - name: https-redirect
-          namespace: traefik

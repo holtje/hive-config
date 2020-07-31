@@ -56,14 +56,3 @@ spec:
   selector:
     app: vacation-calendar
     environment: next
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: vacation-calendar-path
-  namespace: next
-spec:
-  replacePath:
-    path: "/"
-# The route is manually created because it has a secret URL.
-# See https://github.com/containous/traefik/issues/7127

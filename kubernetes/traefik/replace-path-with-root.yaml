@@ -1,0 +1,9 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: replace-path-with-root
+  namespace: traefik
+spec:
+  replacePath:
+    path: "/"

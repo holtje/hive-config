@@ -49,24 +49,3 @@ spec:
   selector:
     app: go-import
     environment: next
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: go-import
-  namespace: next
-
-spec:
-  entryPoints:
-    - web
-    - websecure
-
-  routes:
-    - match: "Host(`next.docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
-      kind: Rule
-      services:
-        - name: go-import
-          port: 80
-      middlewares:
-        - name: https-redirect
-          namespace: traefik

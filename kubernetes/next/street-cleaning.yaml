@@ -54,34 +54,3 @@ spec:
   selector:
     app: street-cleaning
     environment: next
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: street-cleaning-path
-  namespace: next
-spec:
-  replacePath:
-    path: "/"
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: street-cleaning
-  namespace: next
-
-spec:
-  entryPoints:
-    - web
-    - websecure
-
-  routes:
-    - match: "Host(`next.docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)"
-      kind: Rule
-      services:
-        - name: street-cleaning
-          port: 80
-      middlewares:
-        - name: https-redirect
-          namespace: traefik
-        - name: street-cleaning-path
