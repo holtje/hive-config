@@ -19,22 +19,22 @@ spec:
         environment: production
     spec:
       containers:
-        - name: go-import
-          image: docker.io/docwhat/go-importd:1.0.0
-          imagePullPolicy: Always
-          resources:
-            limits:
-              cpu: "20m"
-              memory: "8Mi"
-          env:
-            - name: "GO_IMPORTD_GITHUB_USER_URL"
-              value: "https://github.com/docwhat"
-            - name: "GO_IMPORTD_IMPORT_DOMAIN"
-              value: "docwhat.org"
-          ports:
-            - containerPort: 80
-          securityContext:
-            readOnlyRootFilesystem: true
+      - name: go-import
+        image: docker.io/docwhat/go-importd:1
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "20m"
+            memory: "8Mi"
+        env:
+        - name: "GO_IMPORTD_GITHUB_USER_URL"
+          value: "https://github.com/docwhat"
+        - name: "GO_IMPORTD_IMPORT_DOMAIN"
+          value: "docwhat.org"
+        ports:
+        - containerPort: 80
+        securityContext:
+          readOnlyRootFilesystem: true
 ---
 apiVersion: v1
 kind: Service
@@ -44,8 +44,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 80
   selector:
     app: go-import
     environment: production
