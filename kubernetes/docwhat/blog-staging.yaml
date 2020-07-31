@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-staging
+  namespace: docwhat
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog
+      environment: staging
+  template:
+    metadata:
+      labels:
+        environment: staging
+        app: blog
+    spec:
+      containers:
+        - name: blog
+          image: docwhat/docwhat:master
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "32Mi"
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/cache/nginx
+              name: cache-volume
+            - mountPath: /run
+              name: run-volume
+          securityContext:
+            readOnlyRootFilesystem: true
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-staging
+  namespace: docwhat
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: blog
+    environment: staging

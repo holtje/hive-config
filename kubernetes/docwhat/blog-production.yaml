@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: blog
+  name: blog-production
   namespace: docwhat
   annotations:
     fluxcd.io/automated: "true"
@@ -11,21 +11,21 @@ spec:
   selector:
     matchLabels:
       app: blog
-      environment: staging
+      environment: production
   template:
     metadata:
       labels:
-        environment: staging
+        environment: production
         app: blog
     spec:
       containers:
         - name: blog
-          image: docwhat/docwhat:master
+          image: docwhat/docwhat:live
           imagePullPolicy: Always
           resources:
             limits:
               cpu: "20m"
-              memory: "32Mi"
+              memory: "64Mi"
           ports:
             - containerPort: 80
           volumeMounts:
@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: blog-staging
+  name: blog-production
   namespace: docwhat
 spec:
   type: ClusterIP
@@ -53,4 +53,4 @@ spec:
       targetPort: 80
   selector:
     app: blog
-    environment: staging
+    environment: production
