@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/linode-loadbalancer-protocol: tcp
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
+  name: traefik
+  namespace: traefik
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: web
+    nodePort: 31730
+    port: 80
+    protocol: TCP
+    targetPort: web
+  - name: websecure
+    nodePort: 31485
+    port: 443
+    protocol: TCP
+    targetPort: websecure
+  selector:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
+  type: LoadBalancer
