@@ -25,3 +25,7 @@ spec:
       enabled: true
     registry:
       disableScanning: false
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        create: true
