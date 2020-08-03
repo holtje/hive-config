@@ -5,12 +5,15 @@ set -euo pipefail
 typeset -ra programs=(
   fluxctl
   helm
+  jq
   kubectl
   kubeseal
   octant
 )
 
-function has() {
+typeset -r is_macos=$(if [[ $OSTYPE == darwin* ]]; then echo 1; else echo 0; fi)
+
+has() {
   command -v "$1" >/dev/null 2>&1
 }
 
@@ -21,15 +24,26 @@ for program in "${programs[@]}"; do
   fi
 done
 
-if (("${#missing[@]}")); then
-  if [[ $OSTYPE == darwin* ]] && has brew; then
-    brew install "${missing[@]}"
+if (("${#missing[@]}")) && ((is_macos)) && has brew; then
+  brew install "${missing[@]}"
+  missing=()
+fi
+
+if ((is_macos)); then
+  if [[ -x /usr/local/bin/pip3 ]]; then
+    /usr/local/bin/pip3 install linode-cli --upgrade --quiet
   else
-    echo "Please install the following programs:"
-    for program in "${programs[@]}"; do
-      echo " - ${program}"
-    done
+    /usr/bin/pip3 install linode-cli --upgrade --quiet --user
   fi
+else
+  missing=("${missing[@]}" python3)
+fi
+
+if (("${#missing[@]}")); then
+  echo "Please install the following programs:"
+  for program in "${programs[@]}"; do
+    echo " - ${program}"
+  done
 else
   echo "You are bootstrapped and ready to go! "
 fi
