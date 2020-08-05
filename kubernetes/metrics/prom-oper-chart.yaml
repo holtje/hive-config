@@ -46,6 +46,8 @@ spec:
         GF_SERVER_ROOT_URL: "https://grafana.docwhat.net/"
         GF_SERVER_ENABLE_GZIP: true
       envFromSecret: "grafana-env-secrets"
+    prometheusOperator:
+      cleanupCustomResource: true
     prometheus:
       prometheusSpec:
         externalUrl: "https://prometheus.docwhat.net/"
