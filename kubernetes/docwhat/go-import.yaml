@@ -22,9 +22,9 @@ spec:
           image: docker.io/docwhat/go-importd:1
           imagePullPolicy: Always
           resources:
-            limits:
-              cpu: "6m"
-              memory: "8Mi"
+            requests:
+              cpu: "3m"
+              memory: "4Mi"
           env:
             - name: "GO_IMPORTD_GITHUB_USER_URL"
               value: "https://github.com/docwhat"
