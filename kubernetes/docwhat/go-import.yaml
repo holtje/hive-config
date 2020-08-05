@@ -40,6 +40,9 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: go-import
   namespace: docwhat
+  labels:
+    app: go-import
+    environment: production
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -62,6 +65,9 @@ kind: Service
 metadata:
   name: go-import
   namespace: docwhat
+  labels:
+    app: go-import
+    environment: production
 spec:
   type: ClusterIP
   ports:
