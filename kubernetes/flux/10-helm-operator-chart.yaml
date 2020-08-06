@@ -18,8 +18,3 @@ spec:
     git:
       ssh:
         secretName: "flux-git-deploy"
-    prometheus:
-      enabled: false
-      serviceMonitor:
-        create: true
-        namespace: flux
