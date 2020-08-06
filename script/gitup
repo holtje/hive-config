@@ -13,4 +13,6 @@ git fetch \
 
 git pull
 
+git log 'flux-sync~..'
+
 # EOF
