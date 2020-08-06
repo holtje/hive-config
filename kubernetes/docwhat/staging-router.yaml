@@ -14,7 +14,7 @@ spec:
     - websecure
 
   routes:
-    - match: "Host(`next.docwhat.net`)"
+    - match: "Host(`docwhat.net`)"
       kind: Rule
       services:
         - name: blog-staging
@@ -23,7 +23,7 @@ spec:
         - name: https-redirect
           namespace: traefik
 
-    - match: "Host(`next.docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
+    - match: "Host(`docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
       kind: Rule
       services:
         - name: go-import
@@ -32,7 +32,7 @@ spec:
         - name: https-redirect
           namespace: traefik
 
-    - match: "Host(`next.docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)"
+    - match: "Host(`docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)"
       kind: Rule
       services:
         - name: street-cleaning
@@ -44,7 +44,7 @@ spec:
           namespace: traefik
 
     - kind: Rule
-      match: Host(`next.docwhat.net`) && Path(`/christian-vacation{?:.ics|}`)
+      match: "Host(`docwhat.net`) && Path(`/christian-vacation{?:.ics|}`)"
       services:
         - name: vacation-calendar
           port: 80
