@@ -26,7 +26,7 @@ nodebalancer_id_from_hostname() {
 
   linode-cli nodebalancers list --json |
     jq -r \
-      ".[] | select( .hostname = \"${name}\" ) | .id"
+      ".[] | select( .hostname == \"${name}\" ) | .id"
 }
 
 nodebalancer_ipv4() {
