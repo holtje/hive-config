@@ -58,7 +58,7 @@ spec:
         # https://github.com/containous/traefik/issues/6972
         - name: volume-permissions
           image: busybox:1.32.0
-          command: ["/bin/sh", "-c", "/bin/chmod -Rv 0600 /data/*.json"]
+          command: ["/bin/sh", "-c", "/bin/chmod -Rv 0600 /data/*.json || :"]
           volumeMounts:
             - name: data
               mountPath: /data
