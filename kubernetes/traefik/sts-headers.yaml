@@ -1,0 +1,14 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: sts-headers
+  namespace: traefik
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
+spec:
+  headers:
+    stsSeconds: 15552000
+    stsPreload: true
+    stsIncludeSubdomains: false
