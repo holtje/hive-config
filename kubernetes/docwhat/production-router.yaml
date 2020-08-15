@@ -14,15 +14,13 @@ spec:
     - websecure
 
   routes:
-    - match: "Host(`docwhat.org`) || Host(`www.docwhat.org`)"
+    - match: "Host(`docwhat.org`)"
       kind: Rule
       services:
         - name: blog-production
           port: 80
       middlewares:
         - name: https-redirect
-          namespace: traefik
-        - name: sts-headers
           namespace: traefik
 
     - match: "Host(`docwhat.org`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
@@ -33,8 +31,6 @@ spec:
       middlewares:
         - name: https-redirect
           namespace: traefik
-        - name: sts-headers
-          namespace: traefik
 
     - match: "Host(`docwhat.org`) && Path(`/street-cleaning{?:.ics|}`)"
       kind: Rule
@@ -43,8 +39,6 @@ spec:
           port: 80
       middlewares:
         - name: https-redirect
-          namespace: traefik
-        - name: sts-headers
           namespace: traefik
         - name: replace-path-with-root
           namespace: traefik
@@ -56,8 +50,6 @@ spec:
           port: 80
       middlewares:
         - name: https-redirect
-          namespace: traefik
-        - name: sts-headers
           namespace: traefik
         - name: replace-path-with-root
           namespace: traefik
