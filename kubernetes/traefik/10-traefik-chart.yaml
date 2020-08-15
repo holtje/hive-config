@@ -30,7 +30,7 @@ spec:
             name: traefik-linode-dns
             key: token
     additionalArguments:
-      - "--log.level=INFO"
+      - "--log.level=DEBUG"
       - "--entrypoints.websecure.http.tls.certResolver=le"
       - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.org"
       - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.org"
