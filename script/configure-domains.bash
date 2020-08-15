@@ -30,8 +30,8 @@ nodebalancer_id_from_hostname() {
 }
 
 nodebalancer_ipv4() {
-  local -r nodebalancer_id=$1
-  linode-cli nodebalancers view "$nodebalancer_id" --json |
+  local -r nb_id=$1
+  linode-cli nodebalancers view "$nb_id" --json |
     jq -r '.[0].ipv4'
 }
 
