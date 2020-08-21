@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: traefik
     app.kubernetes.io/name: traefik
-  name: traefik-router
+  name: traefik-routes
   namespace: traefik
 spec:
   entryPoints:
