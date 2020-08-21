@@ -8,6 +8,7 @@ name: Lint Code Base
 
 #
 # Documentation:
+# https://github.com/github/super-linter
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 #
 
@@ -16,8 +17,9 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches-ignore:
-      - 'master'
+    branches: ["master"]
+  pull_request:
+    branches-ignore: []
 
 ###############
 # Set the Job #
@@ -37,14 +39,17 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.2
 
       ################################
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        uses: docker://github/super-linter:v3@sha256:be58ae7974036c1a5ee0eb893745cf308f37dfd9d61ec9cc607f63399b64a9c3
+        uses: docker://github/super-linter:latest
         env:
-          DISABLE_ERRORS: "true"
+          DEFAULT_BRANCH: "main"
+          DISABLE_ERRORS: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
 
 # EOF
