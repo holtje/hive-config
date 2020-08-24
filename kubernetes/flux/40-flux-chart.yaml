@@ -28,3 +28,4 @@ spec:
       dockercfg:
         enabled: true
         secretName: "dockerio-secret"
+        configFileName: "/dockercfg/.dockerconfigjson"
