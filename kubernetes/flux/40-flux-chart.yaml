@@ -23,5 +23,8 @@ spec:
       secretName: "flux-git-deploy"
     syncGarbageCollection:
       enabled: true
+    dockercfg:
+      enabled: true
+      secretName: "dockerio-secret"
     registry:
       disableScanning: false
