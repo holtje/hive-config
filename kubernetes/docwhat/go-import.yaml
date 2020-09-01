@@ -24,7 +24,7 @@ spec:
           resources:
             requests:
               cpu: "3m"
-              memory: "10Mi"
+              memory: "8Mi"
             limits:
               memory: "16Mi"
           env:
@@ -62,7 +62,7 @@ spec:
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: 50
+        targetAverageUtilization: 75
     - type: Resource
       resource:
         name: cpu
