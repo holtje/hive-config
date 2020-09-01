@@ -6,6 +6,7 @@ metadata:
   namespace: docwhat
   annotations:
     fluxcd.io/automated: "true"
+    fluxcd.io/tag.go-import: "semver:~1"
 spec:
   selector:
     matchLabels:
@@ -19,8 +20,7 @@ spec:
     spec:
       containers:
       - name: go-import
-        image: docker.io/docwhat/go-importd:1.1
-        imagePullPolicy: Always
+        image: docker.io/docwhat/go-importd:v1.1.0
         resources:
           requests:
             cpu: "3m"
@@ -34,6 +34,10 @@ spec:
           value: "docwhat.org"
         ports:
         - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
         readinessProbe:
           periodSeconds: 60
           timeoutSeconds: 2
