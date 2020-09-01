@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: vacation-calendar
-          image: docker.io/docwhat/work-calendar:latest
+          image: docker.pkg.github.com/docwhat/vacation-calendar/web:sha-5b5b930
           imagePullPolicy: Always
           resources:
             requests:
@@ -38,7 +38,7 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true
       imagePullSecrets:
-        - name: dockerio-secret
+        - name: github-docker-secret
       volumes:
         - name: cache-volume
           emptyDir: {}
