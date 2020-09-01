@@ -6,6 +6,7 @@ metadata:
   namespace: docwhat
   annotations:
     fluxcd.io/automated: "true"
+    fluxcd.io/tag.vacation-calendar: "glob:sha-*"
 spec:
   replicas: 2
   selector:
