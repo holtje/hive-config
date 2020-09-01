@@ -24,9 +24,9 @@ spec:
           resources:
             requests:
               cpu: "3m"
-              memory: "6Mi"
+              memory: "10Mi"
             limits:
-              memory: "12Mi"
+              memory: "16Mi"
           env:
             - name: "GO_IMPORTD_GITHUB_USER_URL"
               value: "https://github.com/docwhat"
