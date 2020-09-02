@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: vacation-calendar
-        image: docker.pkg.github.com/docwhat/vacation-calendar/web:sha-61e4391
+        image: docker.pkg.github.com/docwhat/vacation-calendar/web:sha-3fd4d42
         imagePullPolicy: Always
         resources:
           requests:
