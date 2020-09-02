@@ -48,18 +48,3 @@ spec:
           namespace: traefik
         - name: replace-path-with-root
           namespace: traefik
-
-    - kind: Rule
-      match: "Host(`docwhat.net`) && Path(`/christian-vacation{?:.ics|}`)"
-      services:
-        - name: vacation-calendar
-          port: 80
-      middlewares:
-        - name: https-redirect
-          namespace: traefik
-        - name: sts-headers
-          namespace: traefik
-        - name: replace-path-with-root
-          namespace: traefik
-        - name: vacation-calendar-auth
-          namespace: docwhat
