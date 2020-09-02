@@ -51,6 +51,11 @@ spec:
             name: run-volume
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
