@@ -1,0 +1,32 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+# https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/release-configuration/
+metadata:
+  name: private-calendar-chart
+  namespace: docwhat
+
+spec:
+  helmVersion: v3
+  targetNamespace: docwhat
+  releaseName: private-calendar
+  chart:
+    git: "git@github.com:holtje/hive-config.git"
+    ref: "main"
+    path: "charts/vacation-calendar"
+    secretName: "flux-git-deploy"
+  values:
+    resources:
+      limits:
+        # cpu: 100m
+        memory: "32Mi"
+      requests:
+        cpu: "0.5m"
+        memory: "8Mi"
+
+    autoscaling:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 5
+      targetCPUUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
