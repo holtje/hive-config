@@ -47,11 +47,11 @@ service:
 ingressRoute:
   enabled: true
   secretPath:
-    name: vacation-planner-path-secret
-    key: path
+    name: "private-calendar-path-secret"
+    key: "path"
   hosts:
-    - docwhat.org
-    - docwhat.net
+    - "docwhat.org"
+    - "docwhat.net"
 
 resources:
   {}

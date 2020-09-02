@@ -1,6 +1,7 @@
 {{- if .Values.ingressRoute.enabled -}}
 {{- $fullName := include "vacation-calendar.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
+{{- $path := include "vacation-calendar.secretPath" . -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -15,16 +16,10 @@ spec:
   entryPoints:
     - web
     - websecure
-  fish0: {{ .Values.ingressRoute | quote }}
-  fish1: {{ .Values.ingressRoute.secretPath | quote }}
-  fish2: {{ .Values.ingressRoute.secretPath.name | quote }}
-  fish3: {{ .Values.ingressRoute.secretPath.key | quote }}
-  fish4: {{ include "vacation-calendar.secretPath" . }}
-  fish5: {{ .Release.Namespace | quote }}
   routes:
     {{- range .Values.ingressRoute.hosts }}
     - kind: Rule
-      match: "Host(`{{ . }}`) && Path(`/cal.{?:.ics|}`)"
+      match: "Host(`{{ . }}`) && Path(`{{- $path -}}`)"
       services:
         - name: {{ $fullName | quote }}
           port: {{ $svcPort }}
