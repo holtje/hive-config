@@ -18,7 +18,6 @@ spec:
   values:
     imagePullSecrets:
       - name: github-docker-secret
-        namespace: docwhat
     resources:
       limits:
         # cpu: 100m
