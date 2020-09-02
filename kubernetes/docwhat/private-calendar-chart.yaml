@@ -10,6 +10,9 @@ spec:
   helmVersion: v3
   targetNamespace: docwhat
   releaseName: private-calendar
+  imagePullSecrets:
+    - name: github-docker-secret
+      namespace: docwhat
   chart:
     git: "git@github.com:holtje/hive-config.git"
     ref: "main"
