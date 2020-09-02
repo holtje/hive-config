@@ -10,15 +10,15 @@ spec:
   helmVersion: v3
   targetNamespace: docwhat
   releaseName: private-calendar
-  imagePullSecrets:
-    - name: github-docker-secret
-      namespace: docwhat
   chart:
     git: "git@github.com:holtje/hive-config.git"
     ref: "main"
     path: "charts/vacation-calendar"
     secretName: "flux-git-deploy"
   values:
+    imagePullSecrets:
+      - name: github-docker-secret
+        namespace: docwhat
     resources:
       limits:
         # cpu: 100m
