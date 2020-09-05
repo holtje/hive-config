@@ -23,7 +23,6 @@ spec:
         image: docker.io/docwhat/go-importd:v1.1.0
         resources:
           requests:
-            cpu: "3m"
             memory: "8Mi"
           limits:
             memory: "16Mi"
@@ -66,11 +65,7 @@ spec:
   - type: Resource
     resource:
       name: memory
-      targetAverageUtilization: 75
-  - type: Resource
-    resource:
-      name: cpu
-      targetAverageUtilization: 50
+      targetAverageUtilization: 80
 ---
 apiVersion: v1
 kind: Service
