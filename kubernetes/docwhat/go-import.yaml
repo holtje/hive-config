@@ -19,32 +19,30 @@ spec:
         environment: production
     spec:
       containers:
-      - name: go-import
-        image: docker.io/docwhat/go-importd:v1.1.0
-        resources:
-          requests:
-            memory: "8Mi"
-          limits:
-            memory: "16Mi"
-        env:
-        - name: "GO_IMPORTD_GITHUB_USER_URL"
-          value: "https://github.com/docwhat"
-        - name: "GO_IMPORTD_IMPORT_DOMAIN"
-          value: "docwhat.org"
-        ports:
-        - containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 80
-        readinessProbe:
-          periodSeconds: 60
-          timeoutSeconds: 2
-          httpGet:
-            path: "/go-importd?go-get=1"
-            port: 80
-        securityContext:
-          readOnlyRootFilesystem: true
+        - name: go-import
+          image: docker.io/docwhat/go-importd:v1.1.0
+          resources:
+            requests:
+              memory: "10Mi"
+          env:
+            - name: "GO_IMPORTD_GITHUB_USER_URL"
+              value: "https://github.com/docwhat"
+            - name: "GO_IMPORTD_IMPORT_DOMAIN"
+              value: "docwhat.org"
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+          readinessProbe:
+            periodSeconds: 60
+            timeoutSeconds: 2
+            httpGet:
+              path: "/go-importd?go-get=1"
+              port: 80
+          securityContext:
+            readOnlyRootFilesystem: true
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -62,10 +60,10 @@ spec:
   minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: memory
-      targetAverageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 100
 ---
 apiVersion: v1
 kind: Service
@@ -78,8 +76,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 80
-    targetPort: 80
+    - port: 80
+      targetPort: 80
   selector:
     app: go-import
     environment: production

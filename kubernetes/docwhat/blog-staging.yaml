@@ -23,9 +23,7 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "8Mi"
-            limits:
-              memory: "32Mi"
+              cpu: 2m
           ports:
             - containerPort: 80
           livenessProbe:
@@ -64,7 +62,7 @@ spec:
   metrics:
     - type: Resource
       resource:
-        name: memory
+        name: cpu
         targetAverageUtilization: 80
 ---
 apiVersion: v1
