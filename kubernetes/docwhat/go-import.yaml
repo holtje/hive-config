@@ -23,7 +23,7 @@ spec:
           image: docker.io/docwhat/go-importd:v1.1.0
           resources:
             requests:
-              memory: "10Mi"
+              cpu: "6m"
           env:
             - name: "GO_IMPORTD_GITHUB_USER_URL"
               value: "https://github.com/docwhat"
@@ -62,8 +62,8 @@ spec:
   metrics:
     - type: Resource
       resource:
-        name: memory
-        targetAverageUtilization: 100
+        name: cpu
+        targetAverageUtilization: 80
 ---
 apiVersion: v1
 kind: Service
