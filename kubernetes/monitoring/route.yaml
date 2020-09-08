@@ -1,0 +1,33 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: all-metrics-routes
+  namespace: monitoring
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+    - match: "Host(`prometheus.docwhat.net`)"
+      kind: Rule
+      services:
+        - name: prometheus-operator-prometheus
+          port: 9090
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+        - name: docwhat-auth
+          namespace: traefik
+    - match: "Host(`alertmanager.docwhat.net`)"
+      kind: Rule
+      services:
+        - name: prometheus-operator-alertmanager
+          port: 9093
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+        - name: docwhat-auth
+          namespace: traefik
