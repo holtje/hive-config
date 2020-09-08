@@ -21,6 +21,9 @@ spec:
       image:
         pullSecrets:
           - dockerio-secret
+    kubeProxy:
+      # Linode doesn't export any ports.
+      enabled: false
     prometheus:
       externalUrl: "https://prometheus.docwhat.net/"
       image:
