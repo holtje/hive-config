@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://containous.github.io/traefik-helm-chart/
     name: traefik
-    version: 9.1.0
+    version: 9.1.1
   values:
     service:
       enabled: false
