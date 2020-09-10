@@ -20,36 +20,36 @@ spec:
         environment: production
     spec:
       containers:
-        - name: street-cleaning
-          image: docker.pkg.github.com/docwhat/street_cleaning/street-cleaning-calendar:sha-c26e6d6
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: "2m"
-          ports:
-            - containerPort: 80
-          livenessProbe:
-            httpGet:
-              path: /nginx-health
-              port: 80
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-          volumeMounts:
-            - mountPath: /var/cache/nginx
-              name: cache-volume
-            - mountPath: /run
-              name: run-volume
-          securityContext:
-            readOnlyRootFilesystem: true
+      - name: street-cleaning
+        image: docker.pkg.github.com/docwhat/street_cleaning/street-cleaning-calendar:sha-20e89df
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "2m"
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /nginx-health
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        volumeMounts:
+        - mountPath: /var/cache/nginx
+          name: cache-volume
+        - mountPath: /run
+          name: run-volume
+        securityContext:
+          readOnlyRootFilesystem: true
       imagePullSecrets:
-        - name: github-docker-secret
+      - name: github-docker-secret
       volumes:
-        - name: cache-volume
-          emptyDir: {}
-        - name: run-volume
-          emptyDir: {}
+      - name: cache-volume
+        emptyDir: {}
+      - name: run-volume
+        emptyDir: {}
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -73,8 +73,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 80
   selector:
     app: street-cleaning
     environment: production
