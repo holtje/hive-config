@@ -20,7 +20,8 @@ spec:
     secretName: "flux-git-deploy"
   values:
     image:
-      repository: docker.pkg.github.com/docwhat/vacation-calendar/vacation-calendar:sha-154489e
+      repository: "docker.pkg.github.com/docwhat/vacation-calendar/vacation-calendar"
+      tag: "sha-154489e"
     imagePullSecrets:
       - name: github-docker-secret
     resources:
