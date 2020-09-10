@@ -23,9 +23,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-podAnnotations:
-  fluxcd.io/automated: "true"
-  fluxcd.io/tag.vacation-calendar: "glob:sha-*"
+podAnnotations: {}
 
 podSecurityContext:
   {}
