@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: docker.pkg.github.com/docwhat/vacation-calendar/web
+  repository: docker.pkg.github.com/docwhat/vacation-calendar/vacation-calendar:sha-154489e
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

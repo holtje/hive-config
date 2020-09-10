@@ -5,6 +5,9 @@ kind: HelmRelease
 metadata:
   name: private-calendar-chart
   namespace: docwhat
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: "glob:sha-*"
 
 spec:
   helmVersion: v3
@@ -16,6 +19,8 @@ spec:
     path: "charts/vacation-calendar"
     secretName: "flux-git-deploy"
   values:
+    image:
+      repository: docker.pkg.github.com/docwhat/vacation-calendar/vacation-calendar:sha-154489e
     imagePullSecrets:
       - name: github-docker-secret
     resources:
