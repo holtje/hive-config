@@ -5,7 +5,7 @@ metadata:
   name: blog-production
   namespace: docwhat
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
 spec:
   selector:
     matchLabels:
@@ -19,8 +19,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: docwhat/docwhat:live
-          imagePullPolicy: Always
+          image: ghcr.io/docwhat/blog:sha-2098ee4a
           resources:
             requests:
               # cpu: "0.5m"
@@ -44,6 +43,8 @@ spec:
               name: run-volume
           securityContext:
             readOnlyRootFilesystem: true
+      imagePullSecrets:
+        - name: github-docker-secret
       volumes:
         - name: cache-volume
           emptyDir: {}
