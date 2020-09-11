@@ -20,3 +20,5 @@ jobs:
           helmVersion: 'v3'
           helmRelease: 'kubernetes/'
           kubernetesVersion: '1.17.9'
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
