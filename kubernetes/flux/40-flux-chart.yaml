@@ -29,3 +29,7 @@ spec:
         enabled: true
         secretName: "dockerio-secret"
         configFileName: "/dockercfg/.dockerconfigjson"
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        create: true
