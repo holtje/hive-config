@@ -19,7 +19,7 @@ spec:
       branch: "main"
       path: "kubernetes"
       user: "Hive Queen"
-      email: "docwhat@users.noreply.github.com"
+      email: "docwhat+hivequeen@users.noreply.github.com"
       secretName: "flux-git-deploy"
     syncGarbageCollection:
       enabled: true
