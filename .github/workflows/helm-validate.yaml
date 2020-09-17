@@ -4,11 +4,17 @@ name: 'Validate Helm Releases'
   pull_request:
     paths:
       - 'kubernetes/**-chart.yaml'
+    branches:
+      - 'master'
+      - 'main'
   push:
     paths:
       - 'kubernetes/**-chart.yaml'
     tags-ignore:
       - 'flux-sync'
+    branches:
+      - 'master'
+      - 'main'
 
 jobs:
   hrval:
