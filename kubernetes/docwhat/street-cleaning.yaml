@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: street-cleaning
-        image: docker.pkg.github.com/docwhat/street_cleaning/street-cleaning-calendar:sha-a3d390a
+        image: docker.pkg.github.com/docwhat/street_cleaning/street-cleaning-calendar:sha-5729fbf
         imagePullPolicy: Always
         resources:
           requests:
