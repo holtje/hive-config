@@ -1,6 +1,4 @@
 {
-  "extends": [
-    "config:base",
-    ":preserveSemverRanges"
-  ]
+  "labels": [":game_die: dependencies", ":robot: bot"],
+  "extends": ["config:base", ":preserveSemverRanges", ":automergeMinor"],
 }
