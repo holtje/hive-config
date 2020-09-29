@@ -4,12 +4,14 @@ name: 'Validate Helm Releases'
   pull_request:
     paths:
       - 'kubernetes/**-chart.yaml'
+      - '.github/workflows/helm-validate.yaml'
     branches:
       - 'master'
       - 'main'
   push:
     paths:
       - 'kubernetes/**-chart.yaml'
+      - '.github/workflows/helm-validate.yaml'
     tags-ignore:
       - 'flux-sync'
     branches:
