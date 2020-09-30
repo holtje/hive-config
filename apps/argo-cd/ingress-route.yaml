@@ -1,0 +1,30 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-server
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argocd.docwhat.net`)
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+      priority: 10
+      services:
+        - name: argocd-server
+          port: 80
+    - kind: Rule
+      match: Host(`argocd.docwhat.net`) && Headers(`Content-Type`, `application/grpc`)
+      middlewares:
+        - name: https-redirect
+          namespace: traefik
+      priority: 11
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: h2c
+  tls: {}

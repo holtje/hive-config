@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: e1b1cc32e02deb06426e
+          clientSecret: $dex.github.clientSecret
+          orgs:
+          - name: holtje
+  repositories: |
+    - name: bitnami
+      type: helm
+      url: https://charts.bitnami.com/bitnami
+    - type: git
+      url: https://github.com/holtje/hive-config.git
+  statusbadge.enabled: "true"
+  url: https://argocd.docwhat.net
