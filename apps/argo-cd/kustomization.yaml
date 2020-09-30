@@ -12,8 +12,8 @@ bases:
 # YAML string, with resources separated by document
 # markers ("---").
 resources:
-  - argocd-sealedsecret.yaml
-  - ingress-route.yaml
+  - ./argocd-sealedsecret.yaml
+  - ./ingress-route.yaml
 
 # Each entry in this list should resolve to
 # a kubernetes object and a JSON patch that will be applied
@@ -40,7 +40,7 @@ resources:
 #   value: new value
 #
 patchesJson6902:
-  - path: overlays/argocd-server-deploy-patch.json
+  - path: ./overlays/argocd-server-deploy-patch.json
     target:
       group: apps
       kind: Deployment
@@ -61,4 +61,4 @@ patchesJson6902:
 # ConfigMap, etc.  Small patches are easy to review and
 # easy to mix together in overlays.
 patchesStrategicMerge:
-  - overlays/argocd-cm.yaml
+  - ./overlays/argocd-cm.yaml
