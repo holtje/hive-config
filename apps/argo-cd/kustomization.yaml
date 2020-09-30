@@ -12,7 +12,7 @@ bases:
 # YAML string, with resources separated by document
 # markers ("---").
 resources:
-  - argocd-secret.yaml
+  - argocd-sealedsecret.yaml
   - ingress-route.yaml
 
 # Each entry in this list should resolve to
