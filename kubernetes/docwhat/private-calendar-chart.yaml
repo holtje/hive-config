@@ -21,7 +21,7 @@ spec:
   values:
     image:
       repository: "docker.pkg.github.com/docwhat/vacation-calendar/vacation-calendar"
-      tag: "sha-648beb0"
+      tag: "sha-83591a7"
     imagePullSecrets:
     - name: github-docker-secret
     resources:
