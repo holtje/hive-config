@@ -2,6 +2,7 @@ traefik:
   service:
     enabled: false
   ingressRoute:
+    enabled: true
     dashboard:
       labels:
         app.kubernetes.io/name: traefik
