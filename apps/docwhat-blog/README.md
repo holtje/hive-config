@@ -1,4 +1,5 @@
-[![App Status](https://argocd.docwhat.net/api/badge?name=docwhat-blog&revision=true)](https://argocd.docwhat.net/applications/docwhat-blog)
+<!-- prettier-ignore -->
+![App Status](https://argocd.docwhat.net/api/badge?name=docwhat-blog&revision=true)
 
 # docwhat-blog
 
