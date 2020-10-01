@@ -9,6 +9,7 @@ typeset -ra programs=(
   jq
   kubectl
   kubeseal
+  kustomize
   octant
 )
 
@@ -21,7 +22,7 @@ has() {
 typeset -a missing=()
 for program in "${programs[@]}"; do
   if ! has "$program"; then
-    missing=("${missing[@]}" "$program")
+    missing+=("$program")
   fi
 done
 
@@ -37,7 +38,7 @@ if ((is_macos)); then
     /usr/bin/pip3 install linode-cli --upgrade --quiet --user
   fi
 else
-  missing=("${missing[@]}" python3)
+  missing+=(python3)
 fi
 
 if (("${#missing[@]}")); then
