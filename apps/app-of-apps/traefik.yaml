@@ -5,7 +5,6 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    name: traefik
     namespace: traefik
     server: https://kubernetes.default.svc
   project: default
