@@ -1,0 +1,39 @@
+prometheus-operator:
+  image:
+    pullSecrets:
+      - dockerio-secret
+  configmapReload:
+    image:
+      pullSecrets:
+        - dockerio-secret
+  kubeProxy:
+    # Linode doesn't export metrics for ports.
+    enabled: false
+  prometheus:
+    externalUrl: "https://prometheus.docwhat.net/"
+    image:
+      pullSecrets:
+        - dockerio-secret
+    thanos:
+      image:
+        pullSecrets:
+          - dockerio-secret
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: linode-block-storage
+          resources:
+            requests:
+              storage: 10Gi
+  alertmanager:
+    externalUrl: https://alertmanager.docwhat.net/
+    image:
+      pullSecrets:
+        - dockerio-secret
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: linode-block-storage
+          resources:
+            requests:
+              storage: 10Gi
