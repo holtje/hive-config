@@ -6,8 +6,8 @@ version: 1.0.0
 
 dependencies:
 - name: traefik
-  repository: https://github.com/containous/traefik
-  version: 9.*
+  repository: "https://containous.github.io/traefik-helm-chart"
+  version: "9.*"
 
 # Traefik Chart version
 appVersion: 1.0.0
