@@ -3,6 +3,7 @@
 set -euo pipefail
 
 typeset -ra programs=(
+  argocd
   fluxctl
   helm
   jq
