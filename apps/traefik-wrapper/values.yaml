@@ -1,9 +1,10 @@
+---
 traefik:
   service:
     enabled: false
   ingressRoute:
-    enabled: true
     dashboard:
+      enabled: true
       labels:
         app.kubernetes.io/name: traefik
   env:
