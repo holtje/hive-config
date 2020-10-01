@@ -56,10 +56,6 @@ Lookup the name for the path
 {{- define "vacation-calendar.secretPath" -}}
 {{- $secret := (lookup "v1" "Secret" .Release.Namespace .Values.ingressRoute.secretPath.name) -}}
 {{- "/" -}}
-{{- if $secret -}}
 {{- index $secret.data .Values.ingressRoute.secretPath.key | b64dec -}}
-{{- else -}}
-{{- "vacation-calendar" -}}
-{{- end -}}
 {{- "{?:.ics|}" -}}
 {{- end -}}
