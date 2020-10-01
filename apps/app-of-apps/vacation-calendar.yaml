@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vacation-calendar
+  namespace: argocd
+spec:
+  destination:
+    namespace: docwhat
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      jsonnet: {}
+      recurse: true
+    path: app
+    repoURL: git@github.com:docwhat/vacation-calendar.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
