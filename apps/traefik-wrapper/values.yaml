@@ -4,9 +4,7 @@ traefik:
     enabled: false
   ingressRoute:
     dashboard:
-      enabled: true
-      labels:
-        app.kubernetes.io/name: traefik
+      enabled: false
   env:
   - name: LINODE_TOKEN
     valueFrom:
