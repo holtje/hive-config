@@ -15,3 +15,6 @@ spec:
     path: kubernetes/docwhat
     repoURL: git@github.com:holtje/hive-config.git
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
