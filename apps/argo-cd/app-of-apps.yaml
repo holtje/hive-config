@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    directory:
+      jsonnet: {}
+      recurse: true
+    path: apps/app-of-apps
+    repoURL: https://github.com/holtje/hive-config.git
+    targetRevision: HEAD
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc

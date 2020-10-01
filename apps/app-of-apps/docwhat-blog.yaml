@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: docwhat-blog
+  namespace: argocd
+spec:
+  destination:
+    namespace: docwhat
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      jsonnet: {}
+      recurse: true
+    path: kubernetes/docwhat
+    repoURL: https://github.com/holtje/hive-config.git
+    targetRevision: HEAD
