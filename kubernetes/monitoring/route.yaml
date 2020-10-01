@@ -7,7 +7,6 @@ metadata:
 
 spec:
   entryPoints:
-    - web
     - websecure
 
   routes:
@@ -17,7 +16,7 @@ spec:
         - name: prometheus-operator-prometheus
           port: 9090
       middlewares:
-        - name: https-redirect
+        - name: sts-headers
           namespace: traefik
         - name: docwhat-auth
           namespace: traefik
@@ -27,7 +26,7 @@ spec:
         - name: prometheus-operator-alertmanager
           port: 9093
       middlewares:
-        - name: https-redirect
+        - name: sts-headers
           namespace: traefik
         - name: docwhat-auth
           namespace: traefik

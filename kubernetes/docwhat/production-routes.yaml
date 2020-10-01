@@ -10,7 +10,6 @@ metadata:
 
 spec:
   entryPoints:
-    - web
     - websecure
 
   routes:
@@ -20,8 +19,6 @@ spec:
         - name: blog-production
           port: 80
       middlewares:
-        - name: https-redirect
-          namespace: traefik
         - name: sts-headers
           namespace: traefik
 
@@ -31,8 +28,6 @@ spec:
         - name: go-import
           port: 80
       middlewares:
-        - name: https-redirect
-          namespace: traefik
         - name: sts-headers
           namespace: traefik
 
@@ -42,8 +37,6 @@ spec:
         - name: street-cleaning
           port: 80
       middlewares:
-        - name: https-redirect
-          namespace: traefik
         - name: sts-headers
           namespace: traefik
         - name: replace-path-with-root

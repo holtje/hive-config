@@ -14,7 +14,6 @@ metadata:
   {{- end }}
 spec:
   entryPoints:
-    - web
     - websecure
   routes:
     {{- range .Values.ingressRoute.hosts }}
@@ -24,8 +23,6 @@ spec:
         - name: {{ $fullName | quote }}
           port: {{ $svcPort }}
       middlewares:
-        - name: https-redirect
-          namespace: traefik
         - name: sts-headers
           namespace: traefik
         - name: replace-path-with-root

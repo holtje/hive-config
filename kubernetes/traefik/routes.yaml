@@ -9,7 +9,6 @@ metadata:
   namespace: traefik
 spec:
   entryPoints:
-    - web
     - websecure
   routes:
     - kind: Rule
@@ -18,8 +17,6 @@ spec:
         - name: api@internal
           kind: TraefikService
       middlewares:
-        - name: https-redirect
-          namespace: traefik
         - name: sts-headers
           namespace: traefik
         - name: docwhat-auth

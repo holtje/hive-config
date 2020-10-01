@@ -5,13 +5,12 @@ metadata:
   name: argocd-server
 spec:
   entryPoints:
-    - web
     - websecure
   routes:
     - kind: Rule
       match: Host(`argocd.docwhat.net`)
       middlewares:
-        - name: https-redirect
+        - name: sts-headers
           namespace: traefik
       priority: 10
       services:
@@ -20,7 +19,7 @@ spec:
     - kind: Rule
       match: Host(`argocd.docwhat.net`) && Headers(`Content-Type`, `application/grpc`)
       middlewares:
-        - name: https-redirect
+        - name: sts-headers
           namespace: traefik
       priority: 11
       services:

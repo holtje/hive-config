@@ -29,6 +29,9 @@ spec:
           secretKeyRef:
             name: traefik-linode-dns
             key: token
+    ports:
+      web:
+        redirectTo: websecure
     additionalArguments:
       - "--log.level=INFO"
       - "--entrypoints.websecure.http.tls.certResolver=le"
