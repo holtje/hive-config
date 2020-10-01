@@ -13,5 +13,5 @@ spec:
       jsonnet: {}
       recurse: true
     path: kubernetes/docwhat
-    repoURL: https://github.com/holtje/hive-config.git
+    repoURL: git@github.com:holtje/hive-config.git
     targetRevision: HEAD

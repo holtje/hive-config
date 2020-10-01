@@ -19,6 +19,9 @@ data:
       type: helm
       url: https://charts.bitnami.com/bitnami
     - type: git
-      url: https://github.com/holtje/hive-config.git
+      url: git@github.com:holtje/hive-config.git
+      sshPrivateKeySecret:
+        name: argocd-secret
+        key: github.holtje.hive-config
   statusbadge.enabled: "true"
   url: https://argocd.docwhat.net

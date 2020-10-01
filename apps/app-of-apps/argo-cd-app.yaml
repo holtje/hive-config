@@ -9,6 +9,6 @@ spec:
   project: default
   source:
     path: apps/argo-cd
-    repoURL: https://github.com/holtje/hive-config.git
+    repoURL: git@github.com:holtje/hive-config.git
   syncPolicy:
     automated: {}
