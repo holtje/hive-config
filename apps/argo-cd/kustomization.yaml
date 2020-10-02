@@ -63,3 +63,4 @@ patchesJson6902:
 # easy to mix together in overlays.
 patchesStrategicMerge:
   - ./overlays/argocd-cm.yaml
+  - ./overlays/argocd-secret.yaml
