@@ -12,5 +12,7 @@ spec:
     path: traefik-chart
     repoURL: "git@github.com:holtje/hive-config.git"
   syncPolicy:
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

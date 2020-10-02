@@ -13,5 +13,7 @@ spec:
     repoURL: git@github.com:holtje/hive-config.git
     targetRevision: HEAD
   syncPolicy:
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
