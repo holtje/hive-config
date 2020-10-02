@@ -13,6 +13,7 @@ bases:
 # markers ("---").
 resources:
   - ./resources/argocd-sealedsecret.yaml
+  - ./resources/default-project.yaml
   - ./resources/ingress-route.yaml
 
 # Each entry in this list should resolve to
