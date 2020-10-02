@@ -4,7 +4,7 @@ metadata:
   name: "metrics-server"
   namespace: "argocd"
 spec:
-  project: "default"
+  project: "system"
   source:
     repoURL: "https://charts.bitnami.com/bitnami"
     chart: "metrics-server"
