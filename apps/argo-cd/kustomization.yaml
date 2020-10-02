@@ -12,7 +12,6 @@ bases:
 # YAML string, with resources separated by document
 # markers ("---").
 resources:
-  - ./app-of-apps.yaml
   - ./argocd-sealedsecret.yaml
   - ./ingress-route.yaml
 
