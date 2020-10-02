@@ -12,8 +12,8 @@ bases:
 # YAML string, with resources separated by document
 # markers ("---").
 resources:
-  - ./argocd-sealedsecret.yaml
-  - ./ingress-route.yaml
+  - ./resources/argocd-sealedsecret.yaml
+  - ./resources/ingress-route.yaml
 
 # Each entry in this list should resolve to
 # a kubernetes object and a JSON patch that will be applied
