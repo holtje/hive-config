@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/prometheus-operator-wrapper
+    path: prometheus-operator-chart
     repoURL: "git@github.com:holtje/hive-config.git"
   syncPolicy:
     syncOptions:

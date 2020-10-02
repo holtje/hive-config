@@ -12,7 +12,7 @@ spec:
     directory:
       jsonnet: {}
       recurse: true
-    path: apps/docwhat-blog
+    path: docwhat-manifests
     repoURL: git@github.com:holtje/hive-config.git
     targetRevision: HEAD
   syncPolicy:

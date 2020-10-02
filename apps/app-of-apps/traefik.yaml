@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/traefik-wrapper
-    repoURL: 'git@github.com:holtje/hive-config.git'
+    path: traefik-chart
+    repoURL: "git@github.com:holtje/hive-config.git"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

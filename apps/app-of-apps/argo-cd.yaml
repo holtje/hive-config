@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/argo-cd
+    path: argocd-manifests
     repoURL: git@github.com:holtje/hive-config.git
     targetRevision: HEAD
   syncPolicy:
