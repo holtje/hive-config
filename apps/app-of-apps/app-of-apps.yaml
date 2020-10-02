@@ -9,12 +9,9 @@ spec:
     directory:
       jsonnet: {}
       recurse: true
-    path: apps/app-of-apps
+    path: app-of-apps
     repoURL: git@github.com:holtje/hive-config.git
     targetRevision: HEAD
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: true
