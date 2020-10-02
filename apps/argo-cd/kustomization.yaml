@@ -13,6 +13,7 @@ bases:
 # markers ("---").
 resources:
   - ./resources/argocd-sealedsecret.yaml
+  - ./resources/cluster-hive-secret.yaml
   - ./resources/default-project.yaml
   - ./resources/ingress-route.yaml
 
