@@ -12,7 +12,5 @@ spec:
     path: apps/traefik-wrapper
     repoURL: 'git@github.com:holtje/hive-config.git'
   syncPolicy:
-    automated:
-      selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
