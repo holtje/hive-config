@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: vacation-calendar
-  namespace: argocd
+  namespace: apps
 spec:
   destination:
     namespace: docwhat

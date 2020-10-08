@@ -15,6 +15,7 @@ resources:
   - ./resources/argocd-sealedsecret.yaml
   - ./resources/cluster-hive-secret.yaml
   - ./resources/default-project.yaml
+  - ./resources/system-project.yaml
   - ./resources/ingress-route.yaml
 
 # Each entry in this list should resolve to
