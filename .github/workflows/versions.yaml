@@ -21,7 +21,8 @@ jobs:
 
       - name: GHCR Updates
         uses: mikefarah/yq:v3
-        run: "apk add --no-cache curl jq bash && ./script/update-image-from-ghcr.bash"
+        with:
+          cmd: "apk add --no-cache curl jq bash && ./script/update-image-from-ghcr.bash"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
