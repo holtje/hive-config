@@ -6,6 +6,7 @@ name: versions
 on:
   schedule:
     - cron: "43 * * * *"
+  push: {}
 
 jobs:
   versions:
@@ -19,7 +20,8 @@ jobs:
         uses: actions/checkout@v2.3.3
 
       - name: GHCR Updates
-        run: ./script/update-image-from-ghcr.bash
+        uses: mikefarah/yq:v3
+        run: "apk add --no-cache curl jq bash && ./script/update-image-from-ghcr.bash"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
