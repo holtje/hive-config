@@ -6,7 +6,6 @@ name: versions
 on:
   schedule:
     - cron: "43 * * * *"
-  push: {}
 
 jobs:
   versions:
