@@ -11,7 +11,3 @@ spec:
   source:
     path: prometheus-operator-chart
     repoURL: "git@github.com:holtje/hive-config.git"
-  syncPolicy:
-    automated: {}
-    syncOptions:
-      - CreateNamespace=true
