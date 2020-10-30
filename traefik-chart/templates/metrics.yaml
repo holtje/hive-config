@@ -16,20 +16,3 @@ spec:
       port: 8082
       targetPort: 8082
   type: ClusterIP
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: traefik
-  namespace: monitoring
-spec:
-  endpoints:
-    - port: metrics
-      path: "/metrics"
-  namespaceSelector:
-    matchNames:
-      - traefik
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: "traefik"
-      app.kubernetes.io/name: "traefik-metrics"
