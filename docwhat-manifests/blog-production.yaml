@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: blog-production
   namespace: docwhat
-  annotations:
-    fluxcd.io/automated: "false"
 spec:
   selector:
     matchLabels:

@@ -4,9 +4,6 @@ kind: Deployment
 metadata:
   name: go-import
   namespace: docwhat
-  annotations:
-    fluxcd.io/automated: "true"
-    fluxcd.io/tag.go-import: "semver:~1"
 spec:
   selector:
     matchLabels:

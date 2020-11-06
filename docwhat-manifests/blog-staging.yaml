@@ -3,9 +3,6 @@ kind: Deployment
 metadata:
   name: blog-staging
   namespace: docwhat
-  annotations:
-    fluxcd.io/automated: "true"
-    fluxcd.io/tag.blog: "glob:sha-*"
 spec:
   selector:
     matchLabels:

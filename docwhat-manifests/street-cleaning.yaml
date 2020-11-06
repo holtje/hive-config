@@ -4,9 +4,6 @@ kind: Deployment
 metadata:
   name: street-cleaning
   namespace: docwhat
-  annotations:
-    fluxcd.io/automated: "true"
-    fluxcd.io/tag.street-cleaning: "glob:sha-*"
 spec:
   replicas: 2
   selector:
