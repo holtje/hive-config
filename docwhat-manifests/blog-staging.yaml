@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: ghcr.io/docwhat/blog:sha-bd5ea5fe
+          image: ghcr.io/docwhat/blog:sha-0af22ddc
           resources:
             requests:
               cpu: 2m
