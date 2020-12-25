@@ -13,5 +13,7 @@ spec:
   destinations:
     - namespace: "kube-system"
       server: "*"
+    - namespace: "sealed-secrets"
+      server: "*"
   sourceRepos:
     - "*"
