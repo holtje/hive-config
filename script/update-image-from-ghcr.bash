@@ -20,10 +20,9 @@ write_tag() {
   local -r tag=$1
   local -r file=$2
 
-  yq write \
-    --inplace "$file" \
-    'spec.template.spec.containers[0].image' \
-    "ghcr.io/docwhat/blog:${tag}"
+  yq eval --inplace \
+    'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = "ghcr.io/docwhat/blog:'"$tag"'", select(.kind == "Deployment"| not)' \
+    "$file"
 }
 
 write_tag "$(get_latest_tag docwhat/blog)" docwhat-manifests/blog-staging.yaml
