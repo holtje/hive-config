@@ -12,7 +12,7 @@ jobs:
     # Name the Job
     name: Update versions
     # Set the agent to run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout
