@@ -32,6 +32,4 @@ jobs:
           author_name: "🐝 Hive Queen"
           author_email: "docwhat+hivequeen@users.noreply.github.com"
           message: "chore: 🤖 version upgrade"
-          token: ${{ secrets.GITHUB_TOKEN }}
-
 # EOF
