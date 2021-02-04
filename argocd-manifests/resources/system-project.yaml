@@ -11,6 +11,8 @@ spec:
     - group: "*"
       kind: "*"
   destinations:
+    - namespace: "kube-system"
+      server: "*"
     - namespace: "metrics"
       server: "*"
     - namespace: "sealed-secrets"
