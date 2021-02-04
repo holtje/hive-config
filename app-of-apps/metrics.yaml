@@ -16,7 +16,6 @@ spec:
           create: true
         extraArgs:
           kubelet-insecure-tls: true
-          kubelet-preferred-address-types: "InternalIP"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: "metrics"
