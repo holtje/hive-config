@@ -1,0 +1,26 @@
+apiVersion: "argoproj.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "metrics"
+  namespace: "argocd"
+spec:
+  project: "system"
+  source:
+    repoURL: "https://charts.bitnami.com/bitnami"
+    chart: "metrics-server"
+    targetRevision: "5.*"
+    helm:
+      values: |
+        ---
+        apiService:
+          create: true
+        extraArgs:
+          kubelet-insecure-tls: true
+          kubelet-preferred-address-types: "InternalIP"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: "metrics"
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
