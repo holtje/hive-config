@@ -17,7 +17,6 @@ spec:
         extraArgs:
           kubelet-insecure-tls: true
           kubelet-preferred-address-types: "InternalIP"
-          enable-aggregator-routing: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: "metrics"
