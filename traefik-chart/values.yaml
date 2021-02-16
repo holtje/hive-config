@@ -6,45 +6,51 @@ traefik:
     dashboard:
       enabled: false
   env:
-  - name: LINODE_TOKEN
-    valueFrom:
-      secretKeyRef:
-        name: traefik-linode-dns
-        key: token
+    - name: LINODE_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: traefik-linode-dns
+          key: token
   ports:
     web:
       redirectTo: websecure
   additionalArguments:
-  - "--log.level=INFO"
-  - "--entrypoints.websecure.http.tls.certResolver=le"
-  - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.org"
-  - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.org"
-  - "--entrypoints.websecure.http.tls.domains[1].main=docwhat.net"
-  - "--entrypoints.websecure.http.tls.domains[1].sans=*.docwhat.net"
-  - "--entrypoints.websecure.http.tls.domains[2].main=docwhat.dev"
-  - "--entrypoints.websecure.http.tls.domains[2].sans=*.docwhat.dev"
-  - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
-  - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-  - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
-  - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
-  - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-  - "--metrics.prometheus"
-  - "--metrics.prometheus.buckets=0.1,0.3,1.2,5.0"
-  - "--metrics.prometheus.entrypoint=metrics"
-  - "--entrypoints.metrics.address=0.0.0.0:8082"
+    - "--log.level=INFO"
+    - "--entrypoints.websecure.http.tls.certResolver=le"
+    - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.org"
+    - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.org"
+    - "--entrypoints.websecure.http.tls.domains[1].main=docwhat.net"
+    - "--entrypoints.websecure.http.tls.domains[1].sans=*.docwhat.net"
+    - "--entrypoints.websecure.http.tls.domains[2].main=docwhat.dev"
+    - "--entrypoints.websecure.http.tls.domains[2].sans=*.docwhat.dev"
+    - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
+    - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+    - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
+    - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
+    - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+    - "--metrics.prometheus"
+    - "--metrics.prometheus.buckets=0.1,0.3,1.2,5.0"
+    - "--metrics.prometheus.entrypoint=metrics"
+    - "--entrypoints.metrics.address=0.0.0.0:8082"
   persistence:
     enabled: true
     existingClaim: traefik-claim
   deployment:
     initContainers:
-    - name: volume-permissions
-      image: busybox:1.32.0
-      command:
-      - "/bin/sh"
-      - "-c"
-      - "/bin/chmod -Rv 0600 /data/*.json || :"
-      volumeMounts:
-      - name: data
-        mountPath: "/data"
+      - name: volume-permissions
+        image: busybox:1.32.0
+        command:
+          - "/bin/sh"
+          - "-c"
+          - "/bin/chmod -Rv 0600 /data/*.json || :"
+        volumeMounts:
+          - name: data
+            mountPath: "/data"
   podSecurityContext:
     fsGroup: 65532
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 1
+  pilot:
+    enabled: true
+    token: "4ad73331-fa21-4022-8c7b-762b57e25833"
