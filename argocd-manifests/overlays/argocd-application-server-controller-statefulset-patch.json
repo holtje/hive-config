@@ -1,0 +1,12 @@
+[
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/command/-",
+    "value": "--repo-server-timeout-seconds"
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/command/-",
+    "value": "120"
+  }
+]
