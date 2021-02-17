@@ -43,11 +43,11 @@ resources:
 #   value: new value
 #
 patchesJson6902:
-  - path: ./overlays/argocd-application-server-controller-statefulset-patch.json
+  - path: ./overlays/argocd-application-controller-statefulset-patch.json
     target:
       group: apps
       kind: Statefulset
-      name: argocd-application-server-controller
+      name: argocd-application-controller
       version: v1
   - path: ./overlays/argocd-server-deploy-patch.json
     target:
