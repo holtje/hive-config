@@ -1,0 +1,8 @@
+---
+kubeEtcd:
+  enabled: false
+kubelet:
+  enabled: false
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false

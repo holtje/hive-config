@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-stack
+  namespace: argocd
+spec:
+  destination:
+    namespace: prometheus-stack
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: kube-prometheus-stack
+    helm:
+      parameters:
+        - name: "kubeEtcd.enabled"
+          value: "false"
+        - name: "kubelet.enabled"
+          value: "false"
+        - name: "prometheusOperator.admissionWebhooks.enabled"
+          value: "false"
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 13.7.2
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
