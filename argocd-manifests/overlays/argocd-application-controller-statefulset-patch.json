@@ -8,25 +8,5 @@
     "op": "add",
     "path": "/spec/template/spec/containers/0/command/-",
     "value": "180"
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/command/-",
-    "value": "--status-processors"
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/command/-",
-    "value": "20"
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/command/-",
-    "value": "--operation-processors"
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/command/-",
-    "value": "10"
   }
 ]
