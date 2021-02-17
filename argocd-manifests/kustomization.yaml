@@ -46,7 +46,7 @@ patchesJson6902:
   - path: ./overlays/argocd-application-controller-statefulset-patch.json
     target:
       group: apps
-      kind: Statefulset
+      kind: StatefulSet
       name: argocd-application-controller
       version: v1
   - path: ./overlays/argocd-server-deploy-patch.json
