@@ -53,4 +53,4 @@ traefik:
     maxSurge: 1
   pilot:
     enabled: true
-    token: "4ad73331-fa21-4022-8c7b-762b57e25833"
+    token: "322ba028-bb54-4ed4-8f11-06ff0cc425e0"
