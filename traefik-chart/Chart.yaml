@@ -5,9 +5,9 @@ type: application
 version: 1.0.0
 
 dependencies:
-- name: traefik
-  repository: "https://helm.traefik.io/traefik"
-  version: "9.4.*"
+  - name: traefik
+    repository: "https://helm.traefik.io/traefik"
+    version: "9.*"
 
 # Traefik Chart version
 appVersion: 1.0.0
