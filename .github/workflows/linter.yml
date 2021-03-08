@@ -17,9 +17,9 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   pull_request:
-    branches-ignore: []
+    branches: ["main"]
 
 ###############
 # Set the Job #
