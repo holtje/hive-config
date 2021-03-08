@@ -29,10 +29,5 @@ data:
       sshPrivateKeySecret:
         name: argocd-secret
         key: github.holtje.hive-config
-    - type: git
-      url: git@github.com:docwhat/vacation-calendar.git
-      sshPrivateKeySecret:
-        name: argocd-secret
-        key: github.docwhat.vacation-planner
   statusbadge.enabled: "true"
   url: https://argocd.docwhat.net
