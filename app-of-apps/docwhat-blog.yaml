@@ -4,20 +4,20 @@ metadata:
   name: docwhat-blog
   namespace: argocd
 spec:
-  destination:
-    namespace: docwhat
-    server: https://kubernetes.default.svc
-  project: default
+  project: 'default'
   source:
+    repoURL: 'git@github.com:holtje/hive-config.git'
+    path: 'docwhat-manifests'
+    targetRevision: 'HEAD'
     directory:
-      jsonnet: {}
       recurse: true
-    path: docwhat-manifests
-    repoURL: git@github.com:holtje/hive-config.git
-    targetRevision: HEAD
+      jsonnet: {}
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: 'docwhat'
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+      - 'CreateNamespace=true'
