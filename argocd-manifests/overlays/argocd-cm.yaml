@@ -31,3 +31,10 @@ data:
         key: github.holtje.hive-config
   statusbadge.enabled: "true"
   url: https://argocd.docwhat.net
+  resource.customizations: |
+    bitnami.com/SealedSecret:
+      health.lua: |
+        hs = {}
+        hs.status = "Healthy"
+        hs.message = "Controller doesn't report resource status"
+        return hs
