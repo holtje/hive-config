@@ -5,7 +5,7 @@ name: versions
 
 on:
   schedule:
-    - cron: "43 */6 * * *"
+    - cron: "43 23 * * *"
 
 jobs:
   versions:
