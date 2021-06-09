@@ -45,7 +45,7 @@ jobs:
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        uses: docker://github/super-linter:v4.2.0@sha256:6c17f2c5a488087a21be74469aa21a01df74165fd259bec2e4a9129c6ef53afd
+        uses: docker://github/super-linter:v4.2.1@sha256:f1ef305af7df9d1aecb2fc7794efa7e572d7d6b619f8e780d83757f6ad083a4e
         env:
           DEFAULT_BRANCH: "main"
           DISABLE_ERRORS: false
