@@ -2,18 +2,18 @@
 
 set -Eeuo pipefail
 
-# This only works because currently, ghcr.io keeps the tag list
-# in the order created.
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+declare -r script_dir
 
 get_latest_tag() {
   local -r name=$1
   curl \
-    -sS \
-    -X GET \
-    -H "Accept: application/vnd.docker.distribution.manifest.v2+json" \
-    -H "Authorization: token ${GITHUB_TOKEN}" \
-    "https://ghcr.io/v2/${name}/tags/list" |
-    jq -r '([.tags[] | select(startswith("sha-"))])[-1]'
+    -sSf \
+    -H "Accept: application/vnd.github.v3+json" \
+    -H "Authorization: token ${GITHUB_TOKEN:?You must pass in a GITHUB_TOKEN}" \
+    "https://api.github.com/user/packages/container/${name}/versions" |
+    tee /tmp/tag-lookup.json |
+    jq --raw-output --from-file "${script_dir}/get-latest-tag.jq"
 }
 
 write_tag() {
@@ -25,6 +25,8 @@ write_tag() {
     "$file"
 }
 
-write_tag "$(get_latest_tag docwhat/blog)" docwhat-manifests/blog-staging.yaml
+new_tag="$(get_latest_tag blog)"
+declare -r new_tag
+write_tag "${new_tag:?Unable to find a new tag}" docwhat-manifests/blog-staging.yaml
 
 # EOF
