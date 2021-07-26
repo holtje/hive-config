@@ -24,6 +24,9 @@ data:
     - name: sealed-secrets
       type: helm
       url: https://bitnami-labs.github.io/sealed-secrets
+    - name: argo-helm
+      type: helm
+      url: https://argoproj.github.io/argo-helm
     - type: git
       url: git@github.com:holtje/hive-config.git
       sshPrivateKeySecret:
