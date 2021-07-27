@@ -29,12 +29,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.4
 
-      - name: Run script
-        uses: mikefarah/yq@v4.11.2
-        with:
-          cmd: "apk add --no-cache curl jq bash && bash -x ./script/update-image-from-ghcr.bash"
+      - name: Install packages
+        run: "sudo apt-get install -y curl jq bash && sudo snap install yq"
+
+      - name: Update images
+        run: "bash -x ./script/update-image-from-ghcr.bash"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
       - name: Commit
         uses: EndBug/add-and-commit@v7.2.1
