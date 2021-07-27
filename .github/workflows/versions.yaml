@@ -4,6 +4,11 @@ name: versions
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
 on:
+  push:
+    paths:
+      - '.github/workflows/versions.yaml'
+      - 'script/update-image-from-ghcr.bash'
+      - 'script/get-latest-tag.jq'
   schedule:
     - cron: "43 23 * * *"
 
