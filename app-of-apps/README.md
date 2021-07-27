@@ -13,4 +13,4 @@
 
 <!--
 :;{ echo "| App | Status |" ; echo "| --- | --- |"; for i in app-of-apps/*.yaml; do n=$(yq eval '.metadata.name' - < "$i") ; echo "| ${n} | [\![App Status](https://argocd.docwhat.net/api/badge?name=${n}&revision=true)](https://argocd.docwhat.net/applications/${n}) |"; done } | pbcopy ; pbpaste
--->>
+-->
