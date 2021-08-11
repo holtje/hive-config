@@ -33,8 +33,6 @@ traefik:
     - "--metrics.prometheus.entrypoint=metrics"
     - "--entrypoints.metrics.address=0.0.0.0:8082"
     - "--providers.kubernetescrd.allowcrossnamespace=true"
-    - "--providers.kubernetescrd.allowexternalnameservices=true"
-    - "--providers.kubernetesingress.allowexternalnameservices=true"
   persistence:
     enabled: true
     existingClaim: traefik-claim
