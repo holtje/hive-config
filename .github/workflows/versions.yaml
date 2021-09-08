@@ -10,7 +10,10 @@ on:
       - 'script/update-image-from-ghcr.bash'
       - 'script/get-latest-tag.jq'
   schedule:
-    - cron: "43 23 * * *"
+    - cron: "43 23 * * 7"
+  workflow_dispatch:
+    types:
+      - docwhat-version
 
 jobs:
   versions:
