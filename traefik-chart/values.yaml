@@ -39,7 +39,7 @@ traefik:
   deployment:
     initContainers:
       - name: volume-permissions
-        image: busybox:1.34.0
+        image: busybox:1.34.1
         command:
           - "/bin/sh"
           - "-c"
