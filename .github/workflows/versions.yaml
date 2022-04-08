@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
       - name: Commit
-        uses: EndBug/add-and-commit@v7.5.0
+        uses: EndBug/add-and-commit@v9.0.0
         with:
           add: "docwhat-manifests/blog-staging.yaml"
           author_name: "🐝 Hive Queen"
