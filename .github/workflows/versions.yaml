@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Checkout
-        uses: actions/checkout@v2.4.1
+        uses: actions/checkout@v3
 
       - name: Install packages
         run: "sudo apt-get install -y curl jq bash && sudo snap install yq"
