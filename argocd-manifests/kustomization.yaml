@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: argocd
 
 bases:
-  - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.4.10
+  - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.4.11
 
 # Each entry in this list must resolve to an existing
 # resource definition in YAML.  These are the resource
