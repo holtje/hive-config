@@ -2,6 +2,7 @@
 traefik:
   service:
     enabled: false
+    single: true
   ingressRoute:
     dashboard:
       enabled: false
