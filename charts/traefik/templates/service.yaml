@@ -3,7 +3,6 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/linode-loadbalancer-protocol: tcp
-    service.beta.kubernetes.io/linode-loadbalancer-preserve: true
   labels:
     app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
