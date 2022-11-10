@@ -52,9 +52,6 @@ traefik:
   rollingUpdate:
     maxUnavailable: 1
     maxSurge: 1
-  pilot:
-    enabled: true
-    token: "322ba028-bb54-4ed4-8f11-06ff0cc425e0"
   tlsOptions:
     default:
       sniStrict: true
