@@ -1,7 +1,9 @@
 ---
 traefik:
   service:
-    enabled: false
+    enabled: true
+    annotations:
+      "service.beta.kubernetes.io/linode-loadbalancer-preserve": true
   ingressRoute:
     dashboard:
       enabled: false
