@@ -3,8 +3,9 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/linode-loadbalancer-protocol: tcp
+    service.beta.kubernetes.io/linode-loadbalancer-preserve: true
   labels:
-    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
   name: traefik
   namespace: traefik
@@ -22,6 +23,6 @@ spec:
     protocol: TCP
     targetPort: websecure
   selector:
-    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
   type: LoadBalancer

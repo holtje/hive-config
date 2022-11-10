@@ -5,11 +5,11 @@ metadata:
   name: traefik-metrics
   namespace: traefik
   labels:
-    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik-metrics
 spec:
   selector:
-    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
   ports:
     - name: metrics

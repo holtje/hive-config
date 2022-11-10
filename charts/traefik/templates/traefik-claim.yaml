@@ -4,7 +4,7 @@ metadata:
   name: traefik-claim
   namespace: traefik
   labels:
-    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
   finalizers:
     - kubernetes.io/pvc-protection
