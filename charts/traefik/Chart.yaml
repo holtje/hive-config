@@ -1,5 +1,5 @@
 apiVersion: v2
-name: traefik-wrapper
+name: traefik
 description: Wraps traefik helm chart for Hive.
 type: application
 version: 1.0.0
