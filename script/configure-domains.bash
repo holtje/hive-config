@@ -18,7 +18,8 @@ cluster_external_hostname() {
 is_a_nodebalancer_hostname() {
   local -r name=$1
 
-  [[ $name == *.nodebalancer.linode.com ]]
+  [[ $name == *.nodebalancer.linode.com ]] ||
+    [[ $name == *.linodeusercontent.com ]]
 }
 
 nodebalancer_id_from_hostname() {
