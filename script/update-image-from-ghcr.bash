@@ -10,7 +10,8 @@ get_latest_tag() {
   curl \
     -sSf \
     -H "Accept: application/vnd.github.v3+json" \
-    -H "Authorization: token ${GITHUB_TOKEN:?You must pass in a GITHUB_TOKEN}" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    --oauth2-bearer "${GITHUB_TOKEN:?You must pass in a GITHUB_TOKEN}" \
     "https://api.github.com/user/packages/container/${name}/versions" |
     tee /tmp/tag-lookup.json |
     jq --raw-output --from-file "${script_dir}/get-latest-tag.jq"
