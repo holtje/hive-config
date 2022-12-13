@@ -1,55 +1,25 @@
 ---
-###########################
-###########################
-## Linter GitHub Actions ##
-###########################
-###########################
 name: Lint Code Base
 
-#
 # Documentation:
-# https://github.com/github/super-linter
+# https://github.com/marketplace/actions/trunk-check
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
-#
 
-#############################
-# Start the job on all push #
-#############################
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+on: [push, pull_request, workflow_dispatch]
 
-###############
-# Set the Job #
-###############
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    # Name the Job
-    name: Lint Code Base
-    # Set the agent to run on
-    runs-on: ubuntu-20.04
+    name: Trunk
+    runs-on: ubuntu-latest
 
-    ##################
-    # Load all steps #
-    ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
       - name: Checkout Code
         uses: actions/checkout@v2.5.0
 
-      ################################
-      # Run Linter against code base #
-      ################################
-      - name: Lint Code Base
-        uses: docker://github/super-linter:v4.9.7@sha256:458d8749baa2da3ef814dfc04832fca41446f6e01d7b5d6ce3c67ff0ef5ed337
-        env:
-          DEFAULT_BRANCH: "main"
-          DISABLE_ERRORS: false
-          FILTER_REGEX_EXCLUDE: 'kustomization\.ya?ml$'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: false
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v1
 # EOF
