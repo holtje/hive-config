@@ -56,21 +56,26 @@ record_ids() {
 
 ### MAIN
 
-declare -r hostname=$(cluster_external_hostname)
+hostname=$(cluster_external_hostname)
+readonly hostname
 
 if ! is_a_nodebalancer_hostname "$hostname"; then
   die "Unable to find external ip: $hostname is not a node balancer"
 fi
 
-declare -r nodebalancer_id=$(nodebalancer_id_from_hostname "$hostname")
+nodebalancer_id=$(nodebalancer_id_from_hostname "$hostname")
+readonly nodebalancer_id
 
-declare -r ipv4=$(nodebalancer_ipv4 "$nodebalancer_id")
-declare -r ipv6=$(nodebalancer_ipv6 "$nodebalancer_id")
+ipv4=$(nodebalancer_ipv4 "$nodebalancer_id")
+ipv6=$(nodebalancer_ipv6 "$nodebalancer_id")
+readonly ipv4 ipv6
 
 info "IPv4: ${ipv4}"
 info "IPv6: ${ipv6}"
 
-declare -ra domain_ids=($(hive_domains))
+declare -a domain_ids=()
+while IFS='' read -r line; do domain_ids+=("$line"); done < <(hive_domains)
+readonly domain_ids
 
 for domain_id in "${domain_ids[@]}"; do
   for record_id in $(record_ids "$domain_id" A); do
