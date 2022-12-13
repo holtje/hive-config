@@ -26,8 +26,14 @@ write_tag() {
     "$file"
 }
 
+yamlfile="docwhat-manifests/blog-${1:-staging}.yaml"
+if ! [[ -f $yamlfile ]]; then
+  echo "No such file: $yamlfile" 1>&2
+  exit 2
+fi
+
 new_tag="$(get_latest_tag blog)"
 declare -r new_tag
-write_tag "${new_tag:?Unable to find a new tag}" docwhat-manifests/blog-staging.yaml
+write_tag "${new_tag:?Unable to find a new tag}" "${yamlfile}"
 
 # EOF
