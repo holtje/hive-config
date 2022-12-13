@@ -6,9 +6,9 @@ name: versions
 on:
   push:
     paths:
-      - '.github/workflows/versions.yaml'
-      - 'script/update-image-from-ghcr.bash'
-      - 'script/get-latest-tag.jq'
+      - ".github/workflows/versions.yaml"
+      - "script/update-image-from-ghcr.bash"
+      - "script/get-latest-tag.jq"
   schedule:
     - cron: "43 23 * * 0"
   workflow_dispatch: {}
