@@ -8,8 +8,8 @@ plugins:
       uri: https://github.com/trunk-io/plugins
 lint:
   disabled:
-    - kube-linter
   enabled:
+    - kube-linter@0.6.0
     - prettier@2.8.3
     - git-diff-check
     - shellcheck@0.9.0
