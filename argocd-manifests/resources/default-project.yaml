@@ -12,6 +12,8 @@ spec:
   destinations:
     - namespace: "*"
       server: "*"
+    - namespace: "!*-system"
+      server: "*"
   orphanedResources:
     warn: true
   sourceRepos:

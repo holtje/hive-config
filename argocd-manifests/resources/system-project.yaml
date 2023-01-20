@@ -11,11 +11,11 @@ spec:
     - group: "*"
       kind: "*"
   destinations:
-    - namespace: "kube-system"
-      server: "*"
     - namespace: "metrics"
       server: "*"
     - namespace: "sealed-secrets"
+      server: "*"
+    - namespace: "*-system"
       server: "*"
   sourceRepos:
     - "*"
