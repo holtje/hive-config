@@ -7,7 +7,7 @@ spec:
   project: "system"
   source:
     repoURL: "https://charts.longhorn.io"
-    chart: "longhorn/longhorn"
+    chart: "longhorn"
     targetRevision: "1.4.*"
   destination:
     server: "https://kubernetes.default.svc"
