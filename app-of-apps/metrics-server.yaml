@@ -10,8 +10,15 @@ spec:
     chart: "metrics-server"
     targetRevision: "6.*"
     helm:
-      valueFiles:
-        - "app-of-apps/metrics-server-values.yaml"
+      values: |
+        ---
+        apiService:
+          create: true
+        extraArgs:
+          - "--kubelet-preferred-address-types=InternalIP"
+          - "--kubelet-insecure-tls"
+          - "--kubelet-use-node-status-port"
+          - "--metric-resolution=15s"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: "metrics"
