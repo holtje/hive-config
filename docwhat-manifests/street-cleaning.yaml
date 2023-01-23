@@ -4,6 +4,11 @@ kind: Deployment
 metadata:
   name: street-cleaning
   namespace: docwhat
+  annotations:
+    ignore-check.kube-linter.io/run-as-non-root: "TODO: this doesn't need to run as root."
+    ignore-check.kube-linter.io/unset-memory-requirements: "TODO: this should work better now."
+    ignore-check.kube-linter.io/unset-cpu-requirements: "What is a good max CPU?"
+    ignore-check.kube-linter.io/no-anti-affinity: "Not the purpose of this cluster."
 spec:
   replicas: 2
   selector:

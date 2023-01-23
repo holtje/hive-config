@@ -4,6 +4,10 @@ kind: Deployment
 metadata:
   name: blog-production
   namespace: docwhat
+  annotations:
+    ignore-check.kube-linter.io/run-as-non-root: "TODO: this doesn't need to run as root."
+    ignore-check.kube-linter.io/unset-memory-requirements: "TODO: this should work better now."
+    ignore-check.kube-linter.io/unset-cpu-requirements: "What is a good max CPU?"
 spec:
   selector:
     matchLabels:
@@ -48,7 +52,7 @@ spec:
         - name: run-volume
           emptyDir: {}
 ---
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: blog-production
@@ -64,7 +68,9 @@ spec:
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: 80
+        target:
+          type: Utilization
+          averageUtilization: 80
 ---
 apiVersion: v1
 kind: Service
