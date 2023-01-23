@@ -19,10 +19,10 @@ spec:
           - "--kubelet-insecure-tls"
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: "metrics"
+    namespace: "kube-system"
   syncPolicy:
     automated:
       selfHeal: true
-      prune: true
+      prune: false
     syncOptions:
       - "CreateNamespace=true"
