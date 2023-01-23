@@ -40,7 +40,6 @@ spec:
               port: 80
           securityContext:
             readOnlyRootFilesystem: true
-            runAsNonRoot: true
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
