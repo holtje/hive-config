@@ -36,7 +36,7 @@ traefik:
     - "--providers.kubernetescrd.allowcrossnamespace=true"
   persistence:
     enabled: true
-    existingClaim: traefik-claim
+    storageClass: longhorn
   deployment:
     initContainers:
       - name: volume-permissions
