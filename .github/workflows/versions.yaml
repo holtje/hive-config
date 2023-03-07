@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Commit
-        uses: EndBug/add-and-commit@v7.5.0
+        uses: EndBug/add-and-commit@v9.1.1
         with:
           add: "docwhat-manifests/blog-staging.yaml"
           author_name: "🐝 Hive Queen"
