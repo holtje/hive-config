@@ -14,7 +14,7 @@ resources:
   - ./resources/default-project.yaml
   - ./resources/system-project.yaml
   - ./resources/ingress-route.yaml
-  - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.6.2
+  - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.6.4
 
 # Each entry in this list should resolve to
 # a kubernetes object and a JSON patch that will be applied
