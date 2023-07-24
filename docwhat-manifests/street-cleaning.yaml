@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: street-cleaning
-          image: ghcr.io/docwhat/street_cleaning:sha-e756ebd
+          image: ghcr.io/docwhat/street_cleaning:sha-558df4f
           imagePullPolicy: Always
           resources:
             requests:
