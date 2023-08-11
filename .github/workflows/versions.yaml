@@ -37,6 +37,8 @@ jobs:
 
       - name: Update images
         run: "bash -x ./script/update-image-from-ghcr.bash"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Commit
         uses: EndBug/add-and-commit@v9.1.3
