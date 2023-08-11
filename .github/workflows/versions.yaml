@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo apt-get install -y curl jq bash &&
           sudo curl -sSfL -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}" &&
-          chmod +x /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
         env:
           VERSION: v4.2.0
           BINARY: yq_linux_amd64
