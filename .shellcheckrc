@@ -1,0 +1,4 @@
+# SC2310: This function is invoked in an 'if' / ! condition so set -e will be
+# disabled. Invoke separately if failures should cause the script to exit.
+# See: https://github.com/koalaman/shellcheck/wiki/SC2310
+disable=SC2310

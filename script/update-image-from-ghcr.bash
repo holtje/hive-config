@@ -19,13 +19,13 @@ write_tag() {
   local -r file=$2
 
   yq eval --inplace \
-    'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = "ghcr.io/docwhat/blog:'"$tag"'", select(.kind == "Deployment"| not)' \
-    "$file"
+    'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = "ghcr.io/docwhat/blog:'"${tag}"'", select(.kind == "Deployment"| not)' \
+    "${file}"
 }
 
 yamlfile="docwhat-manifests/blog-${1:-staging}.yaml"
-if ! [[ -f $yamlfile ]]; then
-  echo "No such file: $yamlfile" 1>&2
+if ! [[ -f ${yamlfile} ]]; then
+  echo "No such file: ${yamlfile}" 1>&2
   exit 2
 fi
 

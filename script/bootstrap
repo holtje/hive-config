@@ -14,7 +14,7 @@ typeset -ra programs=(
   yq
 )
 
-is_macos=$(if [[ $OSTYPE == darwin* ]]; then echo 1; else echo 0; fi)
+is_macos=$(if [[ ${OSTYPE} == darwin* ]]; then echo 1; else echo 0; fi)
 readonly is_macos
 
 has() {
@@ -23,8 +23,8 @@ has() {
 
 typeset -a missing=()
 for program in "${programs[@]}"; do
-  if ! has "$program"; then
-    missing+=("$program")
+  if ! has "${program}"; then
+    missing+=("${program}")
   fi
 done
 
