@@ -4,12 +4,14 @@ set -euo pipefail
 
 typeset -ra programs=(
   argocd
+  gh
   helm
   jq
   kubectl
   kubeseal
   kustomize
   octant
+  yq
 )
 
 is_macos=$(if [[ $OSTYPE == darwin* ]]; then echo 1; else echo 0; fi)
@@ -32,10 +34,12 @@ if (("${#missing[@]}")) && ((is_macos)) && has brew; then
 fi
 
 if ((is_macos)); then
-  if [[ -x /usr/local/bin/pip3 ]]; then
-    /usr/local/bin/pip3 install linode-cli --upgrade --quiet
+  if has brew; then
+    "$(brew --prefix)/bin/pip" install linode-cli --upgrade --quiet
+  elif has pip3; then
+    pip3 install linode-cli --upgrade --quiet --user
   else
-    /usr/bin/pip3 install linode-cli --upgrade --quiet --user
+    pip install linode-cli --upgrade --quiet --user
   fi
 else
   missing+=(python3)
