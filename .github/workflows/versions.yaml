@@ -13,7 +13,9 @@ on:
     - cron: "43 23 * * 0"
   workflow_dispatch: {}
 
-permissions: read-all
+permissions: 
+  contents: write
+  packages: read
 
 jobs:
   versions:
@@ -38,7 +40,7 @@ jobs:
       - name: Update images
         run: "bash -x ./script/update-image-from-ghcr.bash"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
       - name: Commit
         uses: EndBug/add-and-commit@v9.1.3
