@@ -20,19 +20,23 @@ jobs:
     # Name the Job
     name: Update versions
     # Set the agent to run on
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.3
 
       - name: Install packages
-        run: "sudo apt-get install -y curl jq bash && sudo snap install yq"
+        run: |
+          sudo apt-get install -y curl jq bash &&
+          sudo curl -sSfL -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}" &&
+          chmod +x /usr/bin/yq
+        env:
+          VERSION: v4.2.0
+          BINARY: yq_linux_amd64
 
       - name: Update images
         run: "bash -x ./script/update-image-from-ghcr.bash"
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Commit
         uses: EndBug/add-and-commit@v9.1.3
