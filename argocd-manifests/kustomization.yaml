@@ -55,17 +55,28 @@ resources:
 # ConfigMap, etc.  Small patches are easy to review and
 # easy to mix together in overlays.
 patches:
-  - path: ./overlays/argocd-application-controller-statefulset-patch.json
-    target:
+  - target:
       group: apps
       kind: StatefulSet
       name: argocd-application-controller
       version: v1
-  - path: ./overlays/argocd-server-deploy-patch.json
-    target:
+    patch: |-
+      - op: add
+        path: "/spec/template/spec/containers/0/args/-"
+        value: "--repo-server-timeout-seconds"
+      - op: add
+        path: "/spec/template/spec/containers/0/args/-"
+        value: '180'
+
+  - target:
       group: apps
       kind: Deployment
       name: argocd-server
       version: v1
+    patch: |-
+      - op: add
+        path: "/spec/template/spec/containers/0/args/-"
+        value: "--insecure"
+
   - path: ./overlays/argocd-cm.yaml
   - path: ./overlays/argocd-secret.yaml
