@@ -1,12 +1,15 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: blog-staging
   namespace: docwhat
   annotations:
-    ignore-check.kube-linter.io/run-as-non-root: "TODO: this doesn't need to run as root."
-    ignore-check.kube-linter.io/unset-memory-requirements: "TODO: this should work better now."
-    ignore-check.kube-linter.io/unset-cpu-requirements: "What is a good max CPU?"
+    ignore-check.kube-linter.io/run-as-non-root: "TODO: this doesn't need to run as\
+      \ root."
+    ignore-check.kube-linter.io/unset-memory-requirements: 'TODO: this should work
+      better now.'
+    ignore-check.kube-linter.io/unset-cpu-requirements: What is a good max CPU?
 spec:
   selector:
     matchLabels:
@@ -20,14 +23,14 @@ spec:
     spec:
       containers:
         - name: blog
-          image: "ghcr.io/docwhat/blog:sha-da924435"
+          image: ghcr.io/docwhat/blog:sha-da924435
           resources:
             requests:
               cpu: 2m
-              memory: "8Mi"
+              memory: 8Mi
             limits:
               cpu: 100m
-              memory: "32Mi"
+              memory: 32Mi
           ports:
             - containerPort: 80
           livenessProbe:

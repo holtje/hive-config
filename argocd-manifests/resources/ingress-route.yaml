@@ -4,8 +4,7 @@ kind: IngressRoute
 metadata:
   name: argocd-server
 spec:
-  entryPoints:
-    - websecure
+  entryPoints: [websecure]
   routes:
     - kind: Rule
       match: Host(`argocd.docwhat.net`)

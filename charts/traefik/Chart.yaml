@@ -1,10 +1,10 @@
+---
 apiVersion: v2
 name: traefik
 description: Wraps traefik helm chart for Hive.
 type: application
 version: 1.0.0
-
 dependencies:
   - name: traefik
-    repository: "https://helm.traefik.io/traefik"
-    version: "23.*"
+    repository: https://helm.traefik.io/traefik
+    version: 23.*

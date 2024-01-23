@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,16 +12,16 @@ metadata:
 spec:
   externalTrafficPolicy: Cluster
   ports:
-  - name: web
-    nodePort: 31730
-    port: 80
-    protocol: TCP
-    targetPort: web
-  - name: websecure
-    nodePort: 31485
-    port: 443
-    protocol: TCP
-    targetPort: websecure
+    - name: web
+      nodePort: 31730
+      port: 80
+      protocol: TCP
+      targetPort: web
+    - name: websecure
+      nodePort: 31485
+      port: 443
+      protocol: TCP
+      targetPort: websecure
   selector:
     app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik

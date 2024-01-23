@@ -1,23 +1,23 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: docwhat-blog
   namespace: argocd
 spec:
-  project: "default"
+  project: default
   source:
-    repoURL: "git@github.com:holtje/hive-config.git"
-    path: "docwhat-manifests"
-    targetRevision: "HEAD"
+    repoURL: git@github.com:holtje/hive-config.git
+    path: docwhat-manifests
+    targetRevision: HEAD
     directory:
       recurse: true
       jsonnet: {}
   destination:
-    server: "https://kubernetes.default.svc"
-    namespace: "docwhat"
+    server: https://kubernetes.default.svc
+    namespace: docwhat
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - "CreateNamespace=true"
+    syncOptions: [CreateNamespace=true]

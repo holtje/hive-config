@@ -1,8 +1,7 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 namespace: argocd
-
 # Each entry in this list must resolve to an existing
 # resource definition in YAML.  These are the resource
 # files that kustomize reads, modifies and emits as a
@@ -15,7 +14,6 @@ resources:
   - ./resources/system-project.yaml
   - ./resources/ingress-route.yaml
   - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.7.9
-
 # Each entry in this list should resolve to
 # a kubernetes object and a JSON patch that will be applied
 # to the object.
@@ -40,7 +38,6 @@ resources:
 #   path: /some/existing/path
 #   value: new value
 #
-
 # Each entry in this list should resolve to
 # a partial or complete resource definition file.
 #
@@ -67,7 +64,6 @@ patches:
       - op: add
         path: "/spec/template/spec/containers/0/args/-"
         value: '180'
-
   - target:
       group: apps
       kind: Deployment
@@ -77,6 +73,5 @@ patches:
       - op: add
         path: "/spec/template/spec/containers/0/args/-"
         value: "--insecure"
-
   - path: ./overlays/argocd-cm.yaml
   - path: ./overlays/argocd-secret.yaml

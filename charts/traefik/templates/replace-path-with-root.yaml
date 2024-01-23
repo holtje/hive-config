@@ -6,4 +6,4 @@ metadata:
   namespace: traefik
 spec:
   replacePath:
-    path: "/"
+    path: /
