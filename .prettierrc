@@ -1,0 +1,7 @@
+---
+overrides:
+  - files: "*.yaml"
+    options:
+      singleQuote: true
+      quoteProps: "as-needed"
+# vim: ft=yaml

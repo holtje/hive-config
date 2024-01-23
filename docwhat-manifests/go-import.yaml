@@ -5,9 +5,11 @@ metadata:
   name: go-import
   namespace: docwhat
   annotations:
-    ignore-check.kube-linter.io/run-as-non-root: "TODO: this doesn't need to run as root."
-    ignore-check.kube-linter.io/unset-memory-requirements: "TODO: this should work better now."
-    ignore-check.kube-linter.io/unset-cpu-requirements: "What is a good max CPU?"
+    ignore-check.kube-linter.io/run-as-non-root: "TODO: this doesn't need to run as\
+      \ root."
+    ignore-check.kube-linter.io/unset-memory-requirements: 'TODO: this should work
+      better now.'
+    ignore-check.kube-linter.io/unset-cpu-requirements: What is a good max CPU?
 spec:
   selector:
     matchLabels:
@@ -24,12 +26,12 @@ spec:
           image: docker.io/docwhat/go-importd:v1.1.1
           resources:
             requests:
-              cpu: "6m"
+              cpu: 6m
           env:
-            - name: "GO_IMPORTD_GITHUB_USER_URL"
-              value: "https://github.com/docwhat"
-            - name: "GO_IMPORTD_IMPORT_DOMAIN"
-              value: "docwhat.org"
+            - name: GO_IMPORTD_GITHUB_USER_URL
+              value: https://github.com/docwhat
+            - name: GO_IMPORTD_IMPORT_DOMAIN
+              value: docwhat.org
           ports:
             - containerPort: 80
           livenessProbe:
@@ -40,7 +42,7 @@ spec:
             periodSeconds: 60
             timeoutSeconds: 2
             httpGet:
-              path: "/go-importd?go-get=1"
+              path: /go-importd?go-get=1
               port: 80
           securityContext:
             readOnlyRootFilesystem: true

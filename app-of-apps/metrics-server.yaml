@@ -1,14 +1,15 @@
-apiVersion: "argoproj.io/v1alpha1"
-kind: "Application"
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: "metrics"
-  namespace: "argocd"
+  name: metrics
+  namespace: argocd
 spec:
-  project: "system"
+  project: system
   source:
-    repoURL: "https://charts.bitnami.com/bitnami"
-    chart: "metrics-server"
-    targetRevision: "6.*"
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: metrics-server
+    targetRevision: 6.*
     helm:
       values: |
         ---
@@ -18,11 +19,10 @@ spec:
           - "--kubelet-preferred-address-types=InternalIP"
           - "--kubelet-insecure-tls"
   destination:
-    server: "https://kubernetes.default.svc"
-    namespace: "kube-system"
+    server: https://kubernetes.default.svc
+    namespace: kube-system
   syncPolicy:
     automated:
       selfHeal: true
       prune: false
-    syncOptions:
-      - "CreateNamespace=true"
+    syncOptions: [CreateNamespace=true]

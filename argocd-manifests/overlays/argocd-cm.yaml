@@ -32,9 +32,9 @@ data:
       sshPrivateKeySecret:
         name: argocd-secret
         key: github.holtje.hive-config
-  statusbadge.enabled: "true"
+  statusbadge.enabled: 'true'
   url: https://argocd.docwhat.net
-  resource.customizations: |
+  resource.customizations: |-
     bitnami.com/SealedSecret:
       health.lua: |
         hs = {}

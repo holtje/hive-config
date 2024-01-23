@@ -1,19 +1,13 @@
-# The route is manually created because it has a secret URL.
-# See https://github.com/containous/traefik/issues/7127
-
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: staging-routes
   namespace: docwhat
-
 spec:
-  entryPoints:
-    - websecure
-
+  entryPoints: [websecure]
   routes:
-    - match: "Host(`docwhat.net`) || Host(`www.docwhat.net`)"
+    - match: Host(`docwhat.net`) || Host(`www.docwhat.net`)
       kind: Rule
       services:
         - name: blog-staging
@@ -21,8 +15,7 @@ spec:
       middlewares:
         - name: sts-headers
           namespace: traefik
-
-    - match: "Host(`docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)"
+    - match: Host(`docwhat.net`) && Method(`GET`, `HEAD`) && Query(`go-get=1`)
       kind: Rule
       services:
         - name: go-import
@@ -30,8 +23,7 @@ spec:
       middlewares:
         - name: sts-headers
           namespace: traefik
-
-    - match: "Host(`docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)"
+    - match: Host(`docwhat.net`) && Path(`/street-cleaning{?:.ics|}`)
       kind: Rule
       services:
         - name: street-cleaning

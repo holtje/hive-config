@@ -16,24 +16,24 @@ traefik:
     web:
       redirectTo: websecure
   additionalArguments:
-    - "--log.level=INFO"
-    - "--entrypoints.websecure.http.tls.certResolver=le"
-    - "--entrypoints.websecure.http.tls.domains[0].main=docwhat.org"
-    - "--entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.org"
-    - "--entrypoints.websecure.http.tls.domains[1].main=docwhat.net"
-    - "--entrypoints.websecure.http.tls.domains[1].sans=*.docwhat.net"
-    - "--entrypoints.websecure.http.tls.domains[2].main=docwhat.dev"
-    - "--entrypoints.websecure.http.tls.domains[2].sans=*.docwhat.dev"
-    - "--certificatesresolvers.le.acme.email=docwhat@gmail.com"
-    - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-    - "--certificatesresolvers.le.acme.dnschallenge.provider=linodev4"
-    - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
-    - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-    - "--metrics.prometheus"
-    - "--metrics.prometheus.buckets=0.1,0.3,1.2,5.0"
-    - "--metrics.prometheus.entrypoint=metrics"
-    - "--entrypoints.metrics.address=0.0.0.0:8082"
-    - "--providers.kubernetescrd.allowcrossnamespace=true"
+    - --log.level=INFO
+    - --entrypoints.websecure.http.tls.certResolver=le
+    - --entrypoints.websecure.http.tls.domains[0].main=docwhat.org
+    - --entrypoints.websecure.http.tls.domains[0].sans=*.docwhat.org
+    - --entrypoints.websecure.http.tls.domains[1].main=docwhat.net
+    - --entrypoints.websecure.http.tls.domains[1].sans=*.docwhat.net
+    - --entrypoints.websecure.http.tls.domains[2].main=docwhat.dev
+    - --entrypoints.websecure.http.tls.domains[2].sans=*.docwhat.dev
+    - --certificatesresolvers.le.acme.email=docwhat@gmail.com
+    - --certificatesresolvers.le.acme.storage=/data/acme.json
+    - --certificatesresolvers.le.acme.dnschallenge.provider=linodev4
+    - --certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0
+    - --certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory
+    - --metrics.prometheus
+    - --metrics.prometheus.buckets=0.1,0.3,1.2,5.0
+    - --metrics.prometheus.entrypoint=metrics
+    - --entrypoints.metrics.address=0.0.0.0:8082
+    - --providers.kubernetescrd.allowcrossnamespace=true
   persistence:
     enabled: true
     storageClass: longhorn
@@ -42,13 +42,10 @@ traefik:
     initContainers:
       - name: volume-permissions
         image: busybox:1.36.1
-        command:
-          - "/bin/sh"
-          - "-c"
-          - "/bin/chmod -Rv 0600 /data/*.json || :"
+        command: [/bin/sh, -c, '/bin/chmod -Rv 0600 /data/*.json || :']
         volumeMounts:
           - name: data
-            mountPath: "/data"
+            mountPath: /data
   podSecurityContext:
     fsGroup: 65532
   rollingUpdate:
@@ -58,11 +55,11 @@ traefik:
     default:
       sniStrict: true
       # https://ssl-config.mozilla.org/#server=traefik&version=2.5.3
-      minVersion: "VersionTLS12"
+      minVersion: VersionTLS12
       cipherSuites:
-        - "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
-        - "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
-        - "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
-        - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-        - "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305"
-        - "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
