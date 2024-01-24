@@ -35,5 +35,5 @@ actions:
     - trunk-upgrade-available
 merge:
   required_statuses:
-    - trunk_check
-    - git_guardian
+    - Trunk Check
+    - GitGuardian Security Checks
