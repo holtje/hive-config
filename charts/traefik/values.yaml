@@ -14,7 +14,8 @@ traefik:
           key: token
   ports:
     web:
-      redirectTo: websecure
+      redirectTo:
+        port: websecure
   additionalArguments:
     - --log.level=INFO
     - --entrypoints.websecure.http.tls.certResolver=le
