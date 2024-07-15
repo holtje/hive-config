@@ -7,7 +7,6 @@ plugins:
       ref: v1.5.0
       uri: https://github.com/trunk-io/plugins
 lint:
-  disabled:
   enabled:
     - checkov@3.2.75
     - renovate@37.332.0

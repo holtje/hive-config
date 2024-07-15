@@ -6,11 +6,11 @@ name: versions
 on:
   push:
     paths:
-      - '.github/workflows/versions.yaml'
-      - 'script/update-image-from-ghcr.bash'
-      - 'script/get-latest-tag.jq'
+      - .github/workflows/versions.yaml
+      - script/update-image-from-ghcr.bash
+      - script/get-latest-tag.jq
   schedule:
-    - cron: '43 23 * * 0'
+    - cron: 43 23 * * 0
   workflow_dispatch: {}
 
 permissions:
@@ -38,15 +38,15 @@ jobs:
           BINARY: yq_linux_amd64
 
       - name: Update images
-        run: 'bash -x ./script/update-image-from-ghcr.bash'
+        run: bash -x ./script/update-image-from-ghcr.bash
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Commit
         uses: EndBug/add-and-commit@v9.1.3
         with:
-          add: 'docwhat-manifests/blog-staging.yaml'
-          author_name: '🐝 Hive Queen'
-          author_email: 'docwhat+hivequeen@users.noreply.github.com'
+          add: docwhat-manifests/blog-staging.yaml
+          author_name: 🐝 Hive Queen
+          author_email: docwhat+hivequeen@users.noreply.github.com
           message: 'chore: 🤖 version upgrade'
 # EOF

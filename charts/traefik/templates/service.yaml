@@ -4,6 +4,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/linode-loadbalancer-protocol: tcp
+    ignore-check.kube-linter.io/dangling-service: Linter is incorrectly detecting a problem.
   labels:
     app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
