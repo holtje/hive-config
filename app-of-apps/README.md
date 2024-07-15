@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 | App            | Status                                                                                                                                          |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | app-of-apps    | [![App Status](https://argocd.docwhat.net/api/badge?name=app-of-apps&revision=true)](https://argocd.docwhat.net/applications/app-of-apps)       |

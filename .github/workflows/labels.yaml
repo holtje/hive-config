@@ -1,14 +1,18 @@
 name: labels
 
+permissions:
+  contents: read
+  issues: write
+
 on:
   push:
     branches:
-      - "main"
+      - main
     paths:
-      - ".github/labels.yaml"
-      - ".github/workflows/labels.yaml"
+      - .github/labels.yaml
+      - .github/workflows/labels.yaml
   schedule:
-    - cron: "53 1 * * 0"
+    - cron: 53 1 * * 0
 
 jobs:
   labeler:
