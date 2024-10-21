@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://charts.longhorn.io
     chart: longhorn
-    targetRevision: 1.6.*
+    targetRevision: v1.7.2
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
