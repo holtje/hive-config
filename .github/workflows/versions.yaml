@@ -43,7 +43,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
       - name: Commit
-        uses: EndBug/add-and-commit@v9.1.3
+        uses: EndBug/add-and-commit@v9.1.4
         with:
           add: docwhat-manifests/blog-staging.yaml
           author_name: 🐝 Hive Queen
