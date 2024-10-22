@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: metrics-server
-    targetRevision: 6.*
+    targetRevision: 7.*
     helm:
       values: |
         ---
