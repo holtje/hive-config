@@ -11,8 +11,6 @@ spec:
     - group: '*'
       kind: '*'
   destinations:
-    - namespace: metrics
-      server: '*'
     - namespace: sealed-secrets
       server: '*'
     - namespace: '*-system'
