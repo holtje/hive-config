@@ -19,7 +19,7 @@ write_tag() {
   local -r file=$2
 
   yq eval --inplace \
-    'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = "ghcr.io/docwhat/blog:'"${tag}"'", select(.kind == "Deployment"| not)' \
+    'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = "ghcr.io/docwhat/website:'"${tag}"'", select(.kind == "Deployment"| not)' \
     "${file}"
 }
 

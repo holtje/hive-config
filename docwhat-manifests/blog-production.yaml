@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: ghcr.io/docwhat/blog:sha-ae98f4b5
+          image: ghcr.io/docwhat/website:sha-ae98f4b5
           resources:
             requests:
               memory: 8Mi
